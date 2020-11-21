@@ -33,17 +33,18 @@
 
           <div class="card mb-4">
             <h2 class="card-header text-center">Work Requests</h2>
+
+           @foreach($show as $s)
             <div class="card-body">
               <div class="media mb-2">
                 <div class="media-body">
-                  <h3 class="h4 mb-1">maths teacher needed</h3>
-                  <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline"><h5 class="mb-0"></h5> <small class="d-block text-uppercase font-weight-bold text-muted"><time datetime="2017-01">Today</time></small></div>
                 </div>
               </div>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
+              <p class="card-text">{{$s->user_req}}</p>
+             
   <div class="form-group"><button class="btn btn-success" type="submit">Reply</button></div>
   <hr>
+           @endforeach
 
 
   <div class="tab-content">

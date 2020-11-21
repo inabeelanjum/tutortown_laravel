@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Http\Controllers\requestController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,14 +25,20 @@ Route::get('/index', function () {
 Route::get('/notifications', function () {
   return view('layout/notifications');
 });
-Route::get('/requests', function () {
-  return view('layout/requests');
-});
+Route::get('/request', [requestController::class ,'index'])->name('request');
+Route::get('/postr', [requestController::class ,'postr'])->name('postr');
+Route::post('/creater', [requestController::class ,'creater'])->name('creater');
+Route::get('/requests', [requestController::class ,'show'])->name('requests');
+
 Route::get('/nlogin', function () {
-  return view('layout/nlogin');
+  return view('layout/nlogin'); 
 });
 Route::get('/nsignup', function () {
   return view('layout/signUp');
+});
+
+Route::get('/editp', function () {
+  return view('layout/profile_edit');
 });
 
 
