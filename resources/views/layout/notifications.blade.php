@@ -17,12 +17,6 @@
 </div>
 </nav>
     <div class="container">
-      <form class="search-form">
-          <div class="input-group">
-              <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" placeholder="I am looking for..">
-              <div class="input-group-append"><button class="btn btn-primary" type="button">Search </button></div>
-          </div>
-      </form>
         <div class="row">
             <div class="col-md-12">
 
@@ -33,14 +27,9 @@
                     </ul>
 
                             <ul class="thread-list">
-                                <li class="thread"><span class="time">Apr 21</span><span class="title">maths teacher needed </span><span> <button type="button" class="btn btn-success pull-right">Message</button></i></a></span></li> <hr>
-                                <li class="thread"><span class="time">Apr 21</span><span class="title">maths teacher needed </span><span> <button type="button" class="btn btn-success pull-right">Message</button></i></a></span></li><hr>
-                                <li class="thread"><span class="time">Apr 21</span><span class="title">maths teacher needed </span><span> <button type="button" class="btn btn-success pull-right">Message</button></i></a></span></li><hr>
-                                <li class="thread"><span class="time">Apr 21</span><span class="title">maths teacher needed </span><span> <button type="button" class="btn btn-success pull-right">Message</button></i></a></span></li><hr>
-                                <li class="thread"><span class="time">Apr 21</span><span class="title">maths teacher needed </span><span> <button type="button" class="btn btn-success pull-right">Message</button></i></a></span></li><hr>
-                                <li class="thread"><span class="time">Apr 21</span><span class="title">maths teacher needed </span><span> <button type="button" class="btn btn-success pull-right">Message</button></i></a></span></li><hr>
-                                <li class="thread"><span class="time">Apr 21</span><span class="title">maths teacher needed </span><span> <button type="button" class="btn btn-success pull-right">Message</button></i></a></span></li><hr>
-
+                            @foreach( $show as $s)
+                                <li class="thread"><span class="title">{{$s ->replyr }} </span><span> <button type="button" class="btn btn-success pull-right">Message</button></i></a></span></li> <hr>
+                             @endforeach
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="tab-1">

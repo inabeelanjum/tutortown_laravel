@@ -42,7 +42,7 @@
               </div>
               <p class="card-text">{{$s->user_req}}</p>
              
-  <div class="form-group"><button class="btn btn-success" type="submit">Reply</button></div>
+  <div class="form-group"><a href="{{ url('replyreq', $s->user_id )}} "><button class="btn btn-success">Reply</button></div> </a>
   <hr>
            @endforeach
 

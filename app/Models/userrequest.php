@@ -10,6 +10,11 @@ class userrequest extends Model
     use HasFactory;
     protected $fillable =[
         'user_req',
+        'reply',
         'user_id',
     ];
+    public function userrequest()
+    {
+        return $this->hasOne('app\Models\notification');
+    }
 }

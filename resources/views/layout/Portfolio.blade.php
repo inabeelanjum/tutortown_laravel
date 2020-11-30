@@ -38,109 +38,21 @@
                 </ul><button class="btn btn-success" id="btn-logout" type="button"><i class="fa fa-lock"></i>&nbsp; Log Out</button></div>
 </div>
 </nav>
+
     <div class="container mt-4">
       <div class="row">
         <div class="col-12 col-lg-8">
           <div class="card mb-4">
-          	<h2 class="card-header text-center">Malik Nabeel Anjum</h2>
-          	<img src="assets/img/port.jpeg" alt="Portrait of Firstname Lastname" class="w-100">
+          	<h2 class="card-header text-center">{{$show['name']}}</h2>
+            
+          	<img src="assets/img/port.jpeg" alt="Portrait of Firstname Lastname" class="w-100" height='500px'>
             <div class="card-body">
-            	<p class="card-text lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus orci massa, maximus a velit sit amet, fringilla convallis tellus.</p>
-							<p class="card-text">Morbi auctor consectetur convallis. Suspendisse at lobortis libero. Curabitur commodo dapibus rhoncus. Donec accumsan magna et magna auctor pretium. Proin lectus augue, tincidunt eu quam in, finibus imperdiet lectus. Donec commodo, est eu semper pellentesque, sapien arcu tempor leo, quis commodo nisl arcu vitae ligula. Duis et elit ut quam finibus accumsan vitae non leo.</p>
+							<h3 class="card-text">About</h3>
 
-							<p class="card-text">Aenean sit amet feugiat nibh, at tempor quam. Phasellus pretium vitae urna sit amet ultrices. Morbi malesuada nulla eu ipsum sagittis, nec dignissim turpis iaculis. Nullam laoreet interdum lorem sit amet egestas. Quisque ultricies porta dolor, eget dapibus dui. Praesent porttitor quam a quam faucibus volutpat. Pellentesque aliquam convallis faucibus. Pellentesque rhoncus euismod fermentum.</p>
+							<p class="card-text">{{$show['about']}}</p>
             </div>
           </div>
-          <div class="card mb-4">
-            <h2 class="card-header text-center">Work Experience</h2>
-            <div class="card-body">
-              <div class="media mb-2">
-                <i class="fa fa-briefcase fa-fw fa-3x text-success mr-2"></i>
-                <div class="media-body">
-                  <h3 class="h4 mb-1">Front-End Developer</h3>
-                  <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline"><h5 class="mb-0"></h5> <small class="d-block text-uppercase font-weight-bold text-muted"><time datetime="2017-01">January 2017</time> &ndash; <time datetime="2017-12">December 2017</time></small></div>
-                </div>
-              </div>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <hr>
-              <div class="media mb-2">
-                <i class="fa fa-briefcase fa-fw fa-3x text-success mr-2"></i>
-                <div class="media-body">
-                  <h3 class="h4 mb-1">Art Director</h3>
-                  <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline"><h5 class="mb-0"></h5> <small class="d-block text-uppercase font-weight-bold text-muted"><time datetime="2017-01">January 2017</time> &ndash; <time datetime="2017-12">December 2017</time></small></div>
-                </div>
-              </div>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <hr>
-              <div class="collapse" id="collapse-work">
-                <div class="media mb-2">
-                  <i class="fab fa-medium fa-fw fa-3x text-primary mr-2"></i>
-                  <div class="media-body">
-                    <h3 class="h4 mb-1">Copywriter</h3>
-                    <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline"><h5 class="mb-0"></h5> <small class="d-block text-uppercase font-weight-bold text-muted"><time datetime="2017-01">January 2017</time> &ndash; <time datetime="2017-12">December 2017</time></small></div>
-                  </div>
-                </div>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <hr>
-                <div class="media mb-2">
-                  <i class="fab fa-google fa-fw fa-3x text-primary mr-2"></i>
-                  <div class="media-body">
-                    <h3 class="h4 mb-1">Search Engine Consultant</h3>
-                    <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline"><h5 class="mb-0"></h5> <small class="d-block text-uppercase font-weight-bold text-muted"><time datetime="2017-01">January 2017</time> &ndash; <time datetime="2017-12">December 2017</time></small></div>
-                  </div>
-                </div>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <hr>
-
-              </div>
-              <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#collapse-work" aria-expanded="false" aria-controls="collapse-work">Show all</button>
-            </div>
-          </div>
-          <div class="card mb-4">
-            <h2 class="card-header text-center">Education</h2>
-            <div class="card-body">
-              <div class="media mb-2">
-                <i class="fa fa-graduation-cap fa-3x fa-fw text-success mr-2"></i>
-                <div class="media-body">
-                  <h3 class="h4 mb-1">PhD in Software Engineering</h3>
-                  <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline"><h5 class="mb-0"></h5> <small class="d-block text-uppercase font-weight-bold text-muted"><time datetime="2017-01">January 2017</time> &ndash; <time datetime="2017-12">December 2017</time></small></div>
-                </div>
-              </div>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <hr>
-              <div class="media mb-2">
-                <i class="fa fa-graduation-cap fa-3x fa-fw text-success mr-2"></i>
-                <div class="media-body">
-                  <h3 class="h4 mb-1">Master in Interaction Design</h3>
-                  <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline"><h5 class="mb-0"></h5> <small class="d-block text-uppercase font-weight-bold text-muted"><time datetime="2017-01">January 2017</time> &ndash; <time datetime="2017-12">December 2017</time></small></div>
-                </div>
-              </div>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <hr>
-
-              <div class="collapse" id="collapse-education">
-                <div class="media mb-2">
-                  <i class="fas fa-graduation-cap fa-3x fa-fw text-primary mr-2"></i>
-                  <div class="media-body">
-                    <h3 class="h4 mb-1">Information Technology</h3>
-                    <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline"><h5 class="mb-0"></h5> <small class="d-block text-uppercase font-weight-bold text-muted"><time datetime="2017-01">January 2017</time> &ndash; <time datetime="2017-12">December 2017</time></small></div>
-                  </div>
-                </div>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <hr>
-                <div class="media mb-2">
-                  <i class="fas fa-graduation-cap fa-3x fa-fw text-primary mr-2"></i>
-                  <div class="media-body">
-                    <h3 class="h4 mb-1">Science and Technology</h3>
-                    <div class="d-sm-flex justify-content-sm-between align-items-sm-baseline"><h5 class="mb-0"></h5> <small class="d-block text-uppercase font-weight-bold text-muted"><time datetime="2017-01">January 2017</time> &ndash; <time datetime="2017-12">December 2017</time></small></div>
-                  </div>
-                </div>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                <hr>
-              </div>
-              <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="collapse" data-target="#collapse-education" aria-expanded="false" aria-controls="collapse-education">Show all</button>
-            </div>
-          </div>
+          
           <div class="card mb-4">
           	<h2 class="card-header text-center">Testimonials</h2>
             <div class="card-body">
@@ -197,63 +109,66 @@
                   <i class="fa fa-user text-success"></i>
 	            		<i class="fas fa-male text-white" data-fa-transform="shrink-5"></i>
 	            	</div>
+               
 	              <div class="media-body">
-	              Malik Nabeel Anjum
+                {{$show['name']}}
 	              	<hr>
 	              </div>
 	            </div>
-              <div class="media">
-                <div class="fa-layers fa-fw fa-2x mr-3">
-                  <i class="fa fa-calendar text-success"></i>
-	            		<i class="fas fa-male text-white" data-fa-transform="shrink-5"></i>
-	            	</div>
-	              <div class="media-body">
+           
 
-	              	<time datetime="1983-12-06"> october 15 1996</time>
-	              	<hr>
-	              </div>
-	            </div>
             	<div class="media">
                 <div class="fa-layers fa-fw fa-2x mr-3">
                   <i class="fa fa-phone text-success"></i>
 	            		<i class="fas fa-phone text-white" data-fa-transform="shrink-8"></i>
 	            	</div>
 	              <ul class="media-body list-unstyled">
-	              	<li><a href="tel:+923368820160">+92338820160</a></li>
-	              	<li><i class="fa fa-skype"></i> <a href="#0">Skype</a></li>
-                  <li><i class="fa fa-facebook"></i> <a href="#0">Facebook </a></li>
-                  <li><i class="fa fa-twitter"></i> <a href="#0">twitter</a></li>
-
+	              	<li><a href="">{{$show['phone']}}</a></li>
 	              	<li><hr></li>
                   <!-- Alternative to using <hr>: use "border border-secondary border-top-0 border-right-0 border-left-0 pb-3" on <ul> -->
 	              </ul>
 	            </div>
+         
 	            <div class="media">
                 <div class="fa-layers fa-fw fa-2x mr-3">
                   <i class="fa fa-envelope text-success"></i>
 	            		<i class="fas fa-envelope text-white" data-fa-transform="shrink-8"></i>
 	            	</div>
+          
 	              <ul class="media-body list-unstyled">
-	              	<li><a href="mailto:mail@domain.com">mail@domain.com</a></li>
-	              	<li><i class="fa fa-linkedin"></i> <a href="#0">LinkedIn</a></li>
+	              	<li><a href="">{{$show['email']}}</a></li>
 
 	              	<li><hr></li>
 	              </ul>
 	            </div>
+
 	            <div class="media">
                 <div class="fa-layers fa-fw fa-2x mr-3">
             			<i class="fa fa-map-marker text-success"></i>
 	            		<i class="fas fa-home text-white" data-fa-transform="shrink-8"></i>
 	            	</div>
+           
 	              <div class="media-body">
 	              	<address class="mb-0">
-		              	Street Name 123<br>
-		              	ZIP Code and City<br>
-		              	Country
+                  {{$show['location']}}
 	              	</address>
 	              	<hr>
 	              </div>
 	            </div>
+              <div class="media">
+                <div class="fa-layers fa-fw fa-2x mr-3">
+            			<i class="fa fa-money text-success"></i>
+	            		<i class="fas fa-home text-white" data-fa-transform="shrink-8"></i>
+	            	</div>
+           
+	              <div class="media-body">
+	              	<address class="mb-0">
+                <h2> <b> {{$show['location']}}</b> </h2> Rupees per hour
+	              	</address>
+	              	<hr>
+	              </div>
+	            </div>
+       
 	            <div class="media">
             		<div class="fa-layers fa-fw fa-2x mr-3">
             			<i class="fa fa-comments text-success"></i>
@@ -285,14 +200,18 @@
 	            		<i class="fas fa-code text-white" data-fa-transform="shrink-8"></i>
 	            	</div>
 	              <ul class="media-body list-unstyled">
-	              	<li><i class="fa fa-check text-success"></i> <a href="#0">tag</a></li>
-	              		<li><i class="fa fa-check text-success"></i> <a href="#0">tag</a></li>
-                    	<li><i class="fa fa-check text-success"></i> <a href="#0">tag</a></li>
+	              	<li><i class="fa fa-check text-success"></i> {{$show['subj1']}}</li>
+                  <li><i class="fa fa-check text-success"></i> {{$show['subj2']}}</li>
+                  <li><i class="fa fa-check text-success"></i> {{$show['subj3']}}</li>
+                  <li><i class="fa fa-check text-success"></i> {{$show['subj4']}}</li>
+                  <li><i class="fa fa-check text-success"></i> {{$show['subj5']}}</li>
+                  <li><i class="fa fa-check text-success"></i> {{$show['subj6']}}</li>
+	              		
                   <li><hr></li>
 	              </ul>
 	            </div>
 
-
+           
 
             </div>
           </div>

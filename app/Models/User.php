@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
     ];
 
     /**
@@ -42,6 +43,10 @@ class User extends Authenticatable
     ];
     public function userrequest()
     {
-        return $this->hasOne('app\Models\userrequest');
+        return $this->hasOne('App\Models\userrequest');
+    }
+    public function profile()
+    {
+        return $this->hasOne('App\Models\profile');
     }
 }

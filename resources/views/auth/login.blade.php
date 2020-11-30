@@ -34,7 +34,7 @@
     <div class="login-dark">
     <form method="POST" action="{{ route('login') }}">
                         @csrfphp
-            <h2 class="sr-only">Login Formlo</h2>
+            <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
             <div class="form-group"><input id="email" type="email" placeholder='Email' class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
