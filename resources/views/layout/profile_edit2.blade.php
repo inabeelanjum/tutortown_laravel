@@ -70,54 +70,6 @@
                       </div>
           
                       <div class="form-group">
-                          <div class="col-xs-6">
-                             <label for="charges"><h4>charges</h4></label>
-                              <input type="text" class="form-control" name="charges" id="charges" placeholder="enter charges per hour in rupees" title="enter your mobile number if any.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="subject1"><h4>subject 1</h4></label>
-                              <input type="text" class="form-control" name="subj1"  placeholder="enter subject 1 here" title="enter subject.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                      <div class="col-xs-6">
-                              <label for="subject1"><h4>subject 2</h4></label>
-                              <input type="text" class="form-control" name="subj2"  placeholder="enter subject 2 here" title="enter subject.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="subject3"><h4>subject 3</h4></label>
-                              <input type="text" class="form-control" name="subj3"  placeholder="enter subject 3 here" title="enter subject.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                      <div class="col-xs-6">
-                              <label for="subject4"><h4>subject 4</h4></label>
-                              <input type="text" class="form-control" name="subj4"  placeholder="enter subject 4 here" title="enter subject.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                          <div class="col-xs-6">
-                              <label for="subject5"><h4>subject 5</h4></label>
-                              <input type="text" class="form-control" name="subj5"  placeholder="enter subject 5 here" title="enter subject.">
-                          </div>
-                      </div>
-                      <div class="form-group">
-                          
-                      <div class="col-xs-6">
-                              <label for="subject6"><h4>subject 6</h4></label>
-                              <input type="text" class="form-control" name="subj6"  placeholder="enter subject 6 here" title="enter subject.">
-                          </div>
-                      </div>
-                      <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
                               

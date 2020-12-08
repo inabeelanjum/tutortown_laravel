@@ -30,9 +30,19 @@
         <strong>{{ $message }}</strong>
     </span>
 @enderror</div>
+
     <div class="form-group"><input id="password-confirm" placeholder="Re Enter Password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
 </div>
+
+<div class="form-group">
+    <label for="type">Select Type</label>
+    <select class="form-control" placeholder="Select Type" name="type" id="type">
+      <option value='user'>Student</option>
+      <option value='tutor'>Tutor</option>
+    </select>
+  </div>
             <div class="form-group"><button class="btn btn-success btn-block" type="submit">Sign Up</button></div>
         </form>
     </div>
+
 @endsection
