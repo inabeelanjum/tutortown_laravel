@@ -16,16 +16,17 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('image');
-            $table->string('about');
-            $table->string('location');
-            $table->string('phone');
-            $table->string('subj1');
-            $table->string('subj2');
-            $table->string('subj3');
-            $table->string('subj4');
-            $table->string('subj5');
-            $table->string('subj6');
+            $table->string('image')->nullable()->default('N/A');
+            $table->string('about')->nullable()->default('N/A');
+            $table->string('location')->nullable()->default('N/A');
+            $table->string('charges')->nullable()->default('N/A');
+            $table->string('phone')->nullable()->default('N/A');
+            $table->string('subj1')->nullable()->default('N/A');
+            $table->string('subj2')->nullable()->default('N/A');
+            $table->string('subj3')->nullable()->default('N/A');
+            $table->string('subj4')->nullable()->default('N/A');
+            $table->string('subj5')->nullable()->default('N/A');
+            $table->string('subj6')->nullable()->default('N/A');
             $table->timestamps();
         });
     }

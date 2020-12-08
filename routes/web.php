@@ -23,8 +23,8 @@ Route::get('/', function () {
   
 });
 
-Route::get('/index', function () {
-    return view('layout/index');
+Route::get('/proi', function () {
+    return view('layout/proi');
     
 });
 // make authenticated routes.
@@ -37,6 +37,7 @@ Route::post('/replyr/{id}', [requestController::class ,'replyr'])->name('replyr'
 Route::get('/replyreq/{user_id}', [requestController::class ,'replyreq'])->name('replyreq');
 Route::get('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
 Route::get('/tutor/profile/{id}', [TutorsController::class ,'tutor_profile'])->name('tutor_profile');
+Route::post('/editpro', [profileC::class ,'editpro'])->name('editpro');
 
 Route::get('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat');
 Route::post('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat');

@@ -15,7 +15,6 @@
   position: absolute;
   top: 40%;
   left: 50%;
-  color: #fff;
   box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
 }
 
@@ -33,6 +32,7 @@
   border-radius: 0;
   box-shadow: none;
   outline: none;
+  color: inherit;
 }
 
 .login-dark form .btn-primary {

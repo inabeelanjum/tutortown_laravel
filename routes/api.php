@@ -8,6 +8,7 @@ use App\Http\Controllers\profileC;
 use App\Http\Controllers\notiController;
 use App\Http\Controllers\msgsController;
 use App\Http\Controllers\TutorsController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\hiringController;
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use App\Http\Controllers\hiringController;
 |
 */
 
-Route::get('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
+Route::post('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -34,3 +35,16 @@ Route::get('/', function () {
     echo $users;
     echo '</pre>';
 });
+
+Route::group(['middleware' => ['auth:api']], function () {
+    /* 
+    it is working now, 
+    @Problem: following line was commented out in App\Providers\RouteServiceProvider.php
+    protected $namespace = 'App\\Http\\Controllers';
+    */
+    Route::any('/user', [AuthController::class ,'user'])->name('user');
+    Route::get('/tutor/profile/{id}', [TutorsController::class ,'tutor_profile'])->name('tutor_profile');
+    
+});
+
+Route::any('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');

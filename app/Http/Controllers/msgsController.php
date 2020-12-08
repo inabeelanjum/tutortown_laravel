@@ -49,8 +49,8 @@ class msgsController extends Controller
             }
             // check if student has already hired this tutor
             $if_hired = hiring::where('sender_id', $sender_id)->where('receiver_id', $receiver_id)->first();
-            $resp = ['messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id, 'if_hired' => $if_hired];
-            if($request->wantsJson()) {
+            $resp = ['status' => true, 'messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id, 'if_hired' => $if_hired];
+            if( $request->is('api/*')){
                 return $resp;
             } else {
                 return view('layout.chat', $resp);
