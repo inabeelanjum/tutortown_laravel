@@ -7,6 +7,7 @@ use App\Models\User;
 use Auth;
 class AuthController extends Controller
 {
+    
     public function login(Request $request) {
         $client = new \GuzzleHttp\Client();
         try {
