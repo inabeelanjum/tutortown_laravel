@@ -11,10 +11,11 @@
 
 
 @section('content')
-    
+    @if(count($tutors)>0)
     <div class="row product-list">
     @foreach($tutors as $tutor):
-       <div class="col-sm-6 col-md-4 product-item">
+     
+        <div class="col-sm-6 col-md-4 product-item">
             <div class="product-container">
                 <div class="row">
                     <div class="col-md-12"><a class="product-image" href="#"><img src="<?php echo (isset($tutor->profile)) ? url('/files/'.$tutor->profile->image) : '' ?> "></a></div>
@@ -39,6 +40,11 @@
             </div>
         </div>
     @endforeach
+    @else
+    <h2 class="text-center">no results found </h2>
+    <br>
+    <a  href="{{ url('/')}}" class="btn btn-success btn-lg btn-block">search again</a>
+    @endif
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

@@ -22,9 +22,9 @@ use App\Http\Controllers\hiringController;
 */
 
 Route::post('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+   // return $request->user();
+//});
 Route::get('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat');
 Route::any('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
 Route::get('/', function () {
