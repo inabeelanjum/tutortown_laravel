@@ -19,7 +19,7 @@ class msgsController extends Controller
         $tutor = User::where('type', 'tutor')->where('id', $tutor_id)->with('profile')->first();
         
         if($tutor) {
-            $sender_id = Auth::user()->id;
+            $sender_id = 2;
             $receiver_id = $tutor_id;
             if($request->has('send_message')) {
                 $msg = new msgs();

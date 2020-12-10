@@ -140,7 +140,7 @@
 	            		<i class="fas fa-at text-white" data-fa-transform="shrink-8"></i>
 	            	</div>
 	              <div class="media-body">
-                  <form action="<?php echo url(($tutor->type == 'tutor' ? '/user/chat/' : '/tutor/chat/').$tutor->id) ?>" method="post">
+                  <form action="<?php echo url('/tutor/chat/'.$tutor->id) ?>" method="post">
                         @csrf
                         <div class="form-group">
                         <div class="input-group input-group-sm">

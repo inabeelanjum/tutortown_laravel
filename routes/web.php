@@ -8,9 +8,6 @@ use App\Http\Controllers\notiController;
 use App\Http\Controllers\msgsController;
 use App\Http\Controllers\TutorsController;
 use App\Http\Controllers\hiringController;
-use App\Http\Controllers\search;
-use App\Http\Controllers\reviewController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +18,10 @@ use App\Http\Controllers\reviewController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [search::class ,'index']);
-Route::post('/search', [search::class ,'searchtutor'])->name('search');
+Route::get('/', function () {
+  return view('welcome');
+  
+});
 
 Route::get('/proi', function () {
     return view('layout/proi');
@@ -47,9 +46,6 @@ Route::post('/user/chat/{id}', [msgsController::class ,'tutor_to_student_chat'])
 Route::post('/send-message/{id}', [msgsController::class ,'send_message'])->name('send_message');
 Route::post('/message-heartbeat/{id}', [msgsController::class ,'messgae_heartbeat'])->name('messgae_heartbeat');
 Route::post('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
-Route::get('/post-review/{id}', [reviewController::class ,'post_review_form']);
-Route::post('/review/{id}', [reviewController::class ,'review_submit'])->name('review');
-
 
 
 

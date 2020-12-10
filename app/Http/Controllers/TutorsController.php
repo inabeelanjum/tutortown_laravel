@@ -10,13 +10,7 @@ use App\Models\Profile;
 class TutorsController extends Controller
 {
     function tutors_list(Request $request) {
-        $tutors = User::where('type', 'tutor')->get();
-        if($tutors) {
-            foreach($tutors as $k => $tutor) {
-                $profile = Profile::where('user_id', $tutor->id)->first();       
-                $tutors[$k]->profile = $profile;
-            }
-        }
+        $tutors = User::where('type', 'tutor')->with('profile')->get();
         if( $request->is('api/*')){
             return ['status' => true, 'data' => $tutors];
         } else {

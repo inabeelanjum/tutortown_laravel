@@ -60,7 +60,7 @@ class requestController extends Controller
             'send_id' => $user,
             'receiv_id' =>$user_rec,
         ]);
-        return redirect()->back()->with('success','Reply  has been sent');
+        return redirect()->back()->with('success','Reply  has been sentphp');
     }
     
     public function show()

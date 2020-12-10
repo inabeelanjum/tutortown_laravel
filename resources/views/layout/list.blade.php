@@ -11,13 +11,12 @@
 
 
 @section('content')
-    
     <div class="row product-list">
     @foreach($tutors as $tutor):
-       <div class="col-sm-6 col-md-4 product-item">
+        <div class="col-sm-6 col-md-4 product-item">
             <div class="product-container">
                 <div class="row">
-                    <div class="col-md-12"><a class="product-image" href="#"><img src="<?php echo (isset($tutor->profile)) ? url('/files/'.$tutor->profile->image) : '' ?> "></a></div>
+                    <div class="col-md-12"><a class="product-image" href="#"><img src=""></a></div>
                 </div>
                 <div class="row">
                     <div class="col-8">

@@ -31,7 +31,7 @@
     <div class="container mt-4">
     
       <div class="row">
-      <a  href="{{ url('editp')}}" class="btn btn-success btn-lg btn-block">Edit Profile</a>
+      <button  action="{{ url('editp')}}" class="btn btn-success btn-lg btn-block">Update Profile</button>
         <div class="col-12 col-lg-8">
           <div class="card mb-4">
           	<h2 class="card-header text-center">{{$show['name']}}</h2>
@@ -55,19 +55,38 @@
                   <li data-target="#carousel" data-slide-to="3"></li>
                   <li data-target="#carousel" data-slide-to="4"></li>
                 </ol>
-                @if(count($show['reviews']))
                 <div class="carousel-inner">
-                @foreach($show['reviews'] as $k => $value)
                   <div class="carousel-item active">
                     <blockquote class="blockquote text-center d-flex flex-column justify-content-center">
-                      <p class="mb-0">{{$value->message}}</p>
-                      <footer class="blockquote-footer"></footer>
+                      <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in ipsum porttitor, tempor risus eget, finibus enim.</p>
+                      <footer class="blockquote-footer">Firstname Lastname</footer>
                     </blockquote>
                   </div>
-                  @endforeach
-                     </div>
-                     @endif
-                 
+                  <div class="carousel-item">
+                    <blockquote class="blockquote text-center d-flex flex-column justify-content-center">
+                      <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in ipsum porttitor, tempor risus eget, finibus enim. Morbi porta ligula elit, at eleifend tellus tincidunt sit amet. Nunc ex ligula, rutrum vel lorem vel, auctor placerat mi.</p>
+                      <footer class="blockquote-footer">Firstname Lastname</footer>
+                    </blockquote>
+                  </div>
+                  <div class="carousel-item">
+                    <blockquote class="blockquote text-center d-flex flex-column justify-content-center">
+                      <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in ipsum porttitor, tempor risus eget, finibus enim. Morbi porta ligula elit, at eleifend tellus tincidunt sit amet. Nunc ex ligula, rutrum vel lorem vel, auctor placerat mi. Duis sed ante ultrices, viverra elit eu, ultricies sem. Donec quis porta sapien. Cras at lacus purus.</p>
+                      <footer class="blockquote-footer">Firstname Lastname</footer>
+                    </blockquote>
+                  </div>
+                  <div class="carousel-item">
+                    <blockquote class="blockquote text-center d-flex flex-column justify-content-center">
+                      <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in ipsum porttitor, tempor risus eget, finibus enim. Morbi porta ligula elit, at eleifend tellus tincidunt sit amet. Nunc ex ligula, rutrum vel lorem vel, auctor placerat mi.</p>
+                      <footer class="blockquote-footer">Firstname Lastname</footer>
+                    </blockquote>
+                  </div>
+                  <div class="carousel-item">
+                    <blockquote class="blockquote text-center d-flex flex-column justify-content-center">
+                      <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in ipsum porttitor, tempor risus eget, finibus enim.</p>
+                      <footer class="blockquote-footer">Firstname Lastname</footer>
+                    </blockquote>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -147,7 +166,7 @@
 	            		<i class="fas fa-at text-white" data-fa-transform="shrink-8"></i>
 	            	</div>
 	              <div class="media-body">
-                  <form method="post" action="{{url(($show['type'] == 'tutor') ? '/user/chat' : '/tutor/chat')}}">
+                  <form>
 
                     <div class="form-group">
                       <div class="input-group input-group-sm">
