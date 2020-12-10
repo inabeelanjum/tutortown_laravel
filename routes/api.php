@@ -48,3 +48,4 @@ Route::group(['middleware' => ['auth:api']], function () {
 });
 
 Route::any('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::any('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('register');
