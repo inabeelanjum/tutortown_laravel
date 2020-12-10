@@ -19,6 +19,8 @@ class notiController extends Controller
           }
 
         
+
+        
     }
     
 }

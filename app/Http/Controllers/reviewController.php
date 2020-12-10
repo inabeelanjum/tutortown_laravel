@@ -18,6 +18,9 @@ class reviewController extends Controller
     {
       $tutor_id = $id;
       $user_id =Auth::id();
+      dd($user_id);
+      exit;
+
       $rr = reviews::create([
         'user_id' => $user_id,
         'tutor_id' => $tutor_id,
