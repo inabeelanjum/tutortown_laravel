@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\profile;
+use App\Models\reviews;
 use App\Models\User;
 
 class profileC extends Controller
@@ -18,8 +19,10 @@ class profileC extends Controller
     public function profile()
     {
         $id=Auth::id();
+    
         $user= User::find($id);
         $show= profile::where('user_id', $id)->first();
+        $reviews= reviews::where('tutor_id',$id)->get();
         if ( empty($show )) {
             
             return view('layout.profile_edit');
@@ -28,6 +31,7 @@ class profileC extends Controller
           {
         $show = [
             'name'  => $user->name,
+            'type'=>$user->type,
             'email'  => $user->email,
             'image'  => $show->image,
             'about'  => $show->about,
@@ -39,6 +43,7 @@ class profileC extends Controller
             'subj4'  => $show->subj4,
             'subj5'  => $show->subj5,
             'subj6'  => $show->subj6,
+            'reviews'=>$reviews
             
         ];
         if($user->type=='tutor'){
