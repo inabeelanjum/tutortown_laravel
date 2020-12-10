@@ -22,6 +22,9 @@ use App\Http\Controllers\reviewController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/replyr/{id}', [requestController::class ,'replyr'])->name('replyr');
+Route::get('/requests', [requestController::class ,'show'])->name('requests');
+Route::post('/creater', [requestController::class ,'creater'])->name('creater');
 Route::post('/review/{id}', [reviewController::class ,'review_submit'])->name('review');
 Route::post('/search', [search::class ,'searchtutor'])->name('search');
 Route::post('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');

@@ -38,7 +38,7 @@ class requestController extends Controller
 }
     public function creater(Request $req)
     {
-        $user = Auth::id();
+        $user = Auth::user()->id;
         $req -> validate([
             'requestr'=> 'required|min:20|max:300',
         ]);
@@ -46,7 +46,23 @@ class requestController extends Controller
             'user_req' => $req -> requestr,
             'user_id' => $user,
         ]);
-        return redirect()->back()->with('success','post has been created');
+        if( $req->is('api/*'))
+        {
+            if($rr == true)
+            {
+                return ['status' => true, 'message' => 'post has been created' ];
+            }
+            else{
+                return ['status' => false, 'message' => 'invalid request' ];
+            }
+          
+            } 
+        else 
+        {
+
+            return redirect()->back()->with('success','post has been created');
+        }
+       
     }
     public function replyr(Request $req,$id)
     {
@@ -60,15 +76,39 @@ class requestController extends Controller
             'send_id' => $user,
             'receiv_id' =>$user_rec,
         ]);
-        return redirect()->back()->with('success','Reply  has been sent');
+
+        if( $req->is('api/*'))
+        {
+            if($rr == true)
+            {
+                return ['status' => true, 'message' => 'request has been replyed' ];
+            }
+            else{
+                return ['status' => false, 'message' => 'invalid request' ];
+            }
+          
+            } 
+        else 
+        {
+
+            return redirect()->back()->with('success','Reply  has been sent');
+        }
+      
     }
     
-    public function show()
+    public function show(Request $req)
     {
       $show =userrequest::all();
+
+      if( $req->is('api/*')){
+        return ['status' => true, 'data' => $show];
+    } else {
+        return view('layout/requests', ['show' => $show]);
+    }
+      
     
 
-   return view('layout/requests', ['show' => $show]);
+   
     }
 
 }
