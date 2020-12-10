@@ -18,13 +18,26 @@ class reviewController extends Controller
     {
       $tutor_id = $id;
       $user_id =Auth::id();
-
       $rr = reviews::create([
         'user_id' => $user_id,
         'tutor_id' => $tutor_id,
         'message' =>$req->review,
     ]);
-    return redirect()->back()->with('success','Review has been posted');
+    if( $req->is('api/*')){
+        if($rr == true)
+        {
+            return ['status' => true, 'message' => 'review is submitted' ];
+        }
+        else{
+            return ['status' => false, 'message' => 'invalid request' ];
+
+        }
+      
+    } else {
+        return redirect()->back()->with('success','Review has been posted');
+    }
+
+  
 
     }
 }

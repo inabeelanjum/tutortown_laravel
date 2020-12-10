@@ -31,8 +31,12 @@ class search extends Controller
     ->orWhere('subj6', 'LIKE', "%{$s}%")    
     ->get();
 
-    
+    if( $req->is('api/*')){
+      return ['status' => true, 'data' => $tutors];
+  } else {
     return view('layout.result', ['tutors' => $tutors]);
+  }
+    
     
   }
 }

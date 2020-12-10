@@ -10,6 +10,8 @@ use App\Http\Controllers\msgsController;
 use App\Http\Controllers\TutorsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\hiringController;
+use App\Http\Controllers\search;
+use App\Http\Controllers\reviewController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,7 +22,8 @@ use App\Http\Controllers\hiringController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::post('/review/{id}', [reviewController::class ,'review_submit'])->name('review');
+Route::post('/search', [search::class ,'searchtutor'])->name('search');
 Route::post('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
    // return $request->user();
