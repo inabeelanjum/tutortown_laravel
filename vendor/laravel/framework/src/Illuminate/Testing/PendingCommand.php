@@ -351,7 +351,7 @@ class PendingCommand
             $table->render();
 
             $lines = array_filter(
-                explode(PHP_EOL, $output->fetch())
+                explode("\n", $output->fetch())
             );
 
             foreach ($lines as $line) {

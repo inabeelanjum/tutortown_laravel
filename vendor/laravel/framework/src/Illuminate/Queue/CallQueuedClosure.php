@@ -87,7 +87,7 @@ class CallQueuedClosure implements ShouldQueue
     /**
      * Handle a job failure.
      *
-     * @param  \Exception  $e
+     * @param  \Exception  $exception
      * @return void
      */
     public function failed(Exception $e)

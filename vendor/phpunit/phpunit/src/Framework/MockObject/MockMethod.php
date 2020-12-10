@@ -18,11 +18,11 @@ use function sprintf;
 use function substr_count;
 use function trim;
 use function var_export;
+use ReflectionException;
 use ReflectionMethod;
 use ReflectionNamedType;
 use ReflectionParameter;
 use ReflectionUnionType;
-use SebastianBergmann\Template\Exception as TemplateException;
 use SebastianBergmann\Template\Template;
 use SebastianBergmann\Type\ReflectionMapper;
 use SebastianBergmann\Type\Type;
@@ -95,7 +95,6 @@ final class MockMethod
     private $deprecation;
 
     /**
-     * @throws ReflectionException
      * @throws RuntimeException
      */
     public static function fromReflection(ReflectionMethod $method, bool $callOriginalMethod, bool $cloneArguments): self
@@ -239,23 +238,12 @@ final class MockMethod
         return $this->returnType;
     }
 
-    /**
-     * @throws RuntimeException
-     */
     private function getTemplate(string $template): Template
     {
         $filename = __DIR__ . DIRECTORY_SEPARATOR . 'Generator' . DIRECTORY_SEPARATOR . $template;
 
         if (!isset(self::$templates[$filename])) {
-            try {
-                self::$templates[$filename] = new Template($filename);
-            } catch (TemplateException $e) {
-                throw new RuntimeException(
-                    $e->getMessage(),
-                    (int) $e->getCode(),
-                    $e
-                );
-            }
+            self::$templates[$filename] = new Template($filename);
         }
 
         return self::$templates[$filename];
@@ -333,7 +321,7 @@ final class MockMethod
     /**
      * Returns the parameters of a function or method.
      *
-     * @throws ReflectionException
+     * @throws RuntimeException
      */
     private static function getMethodParametersForCall(ReflectionMethod $method): string
     {
@@ -364,15 +352,15 @@ final class MockMethod
     }
 
     /**
-     * @throws ReflectionException
+     * @throws RuntimeException
      */
     private static function exportDefaultValue(ReflectionParameter $parameter): string
     {
         try {
             return (string) var_export($parameter->getDefaultValue(), true);
             // @codeCoverageIgnoreStart
-        } catch (\ReflectionException $e) {
-            throw new ReflectionException(
+        } catch (ReflectionException $e) {
+            throw new RuntimeException(
                 $e->getMessage(),
                 (int) $e->getCode(),
                 $e

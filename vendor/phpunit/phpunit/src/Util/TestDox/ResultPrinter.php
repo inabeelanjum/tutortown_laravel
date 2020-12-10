@@ -12,7 +12,6 @@ namespace PHPUnit\Util\TestDox;
 use function get_class;
 use function in_array;
 use PHPUnit\Framework\AssertionFailedError;
-use PHPUnit\Framework\ErrorTestCase;
 use PHPUnit\Framework\Test;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\TestSuite;
@@ -314,7 +313,7 @@ abstract class ResultPrinter extends Printer implements ResultPrinterInterface
             return false;
         }
 
-        if ($test instanceof ErrorTestCase || $test instanceof WarningTestCase) {
+        if ($test instanceof WarningTestCase) {
             return false;
         }
 

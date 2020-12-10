@@ -29,7 +29,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     use GuardHelpers, Macroable;
 
     /**
-     * The name of the guard. Typically "web".
+     * The name of the Guard. Typically "session".
      *
      * Corresponds to guard name in authentication configuration.
      *

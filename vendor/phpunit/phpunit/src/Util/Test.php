@@ -142,10 +142,7 @@ final class Test
 
     public static function requiresCodeCoverageDataCollection(TestCase $test): bool
     {
-        $annotations = self::parseTestMethodAnnotations(
-            get_class($test),
-            $test->getName(false)
-        );
+        $annotations = $test->getAnnotations();
 
         // If there is no @covers annotation but a @coversNothing annotation on
         // the test method then code coverage data does not need to be collected

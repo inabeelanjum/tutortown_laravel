@@ -51,8 +51,7 @@ class ComponentTagCompiler
      * Create new component tag compiler.
      *
      * @param  array  $aliases
-     * @param  array  $namespaces
-     * @param  \Illuminate\View\Compilers\BladeCompiler|null $blade
+     * @param  \Illuminate\View\Compilers\BladeCompiler|null
      * @return void
      */
     public function __construct(array $aliases = [], array $namespaces = [], ?BladeCompiler $blade = null)

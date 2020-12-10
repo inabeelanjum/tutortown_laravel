@@ -41,6 +41,13 @@ class BelongsTo extends Relation
     protected $relationName;
 
     /**
+     * The count of self joins.
+     *
+     * @var int
+     */
+    protected static $selfJoinCount = 0;
+
+    /**
      * Create a new belongs to relationship instance.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
@@ -270,6 +277,16 @@ class BelongsTo extends Relation
         return $query->whereColumn(
             $hash.'.'.$this->ownerKey, '=', $this->getQualifiedForeignKeyName()
         );
+    }
+
+    /**
+     * Get a relationship join table hash.
+     *
+     * @return string
+     */
+    public function getRelationCountHash()
+    {
+        return 'laravel_reserved_'.static::$selfJoinCount++;
     }
 
     /**

@@ -12,7 +12,6 @@ namespace PHPUnit\Framework;
 use const PHP_EOL;
 use function array_diff;
 use function array_keys;
-use function array_map;
 use function array_merge;
 use function array_unique;
 use function basename;
@@ -79,7 +78,7 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
     /**
      * The test groups of the test suite.
      *
-     * @psalm-var array<string,list<Test>>
+     * @var array
      */
     protected $groups = [];
 
@@ -557,17 +556,10 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
 
     /**
      * Returns the test groups of the suite.
-     *
-     * @psalm-return list<string>
      */
     public function getGroups(): array
     {
-        return array_map(
-            static function ($key): string {
-                return (string) $key;
-            },
-            array_keys($this->groups)
-        );
+        return array_keys($this->groups);
     }
 
     public function getGroupDetails(): array
@@ -610,56 +602,56 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
 
         $test = null;
 
-        if ($this->testCase && class_exists($this->name, false)) {
-            try {
-                foreach ($hookMethods['beforeClass'] as $beforeClassMethod) {
-                    if (method_exists($this->name, $beforeClassMethod)) {
-                        if ($missingRequirements = TestUtil::getMissingRequirements($this->name, $beforeClassMethod)) {
-                            $this->markTestSuiteSkipped(implode(PHP_EOL, $missingRequirements));
-                        }
-
-                        call_user_func([$this->name, $beforeClassMethod]);
-                    }
-                }
-            } catch (SkippedTestSuiteError $error) {
-                foreach ($this->tests() as $test) {
-                    $result->startTest($test);
-                    $result->addFailure($test, $error, 0);
-                    $result->endTest($test, 0);
-                }
-
-                $result->endTestSuite($this);
-
-                return $result;
-            } catch (Throwable $t) {
-                $errorAdded = false;
-
-                foreach ($this->tests() as $test) {
-                    if ($result->shouldStop()) {
-                        break;
+        try {
+            foreach ($hookMethods['beforeClass'] as $beforeClassMethod) {
+                if ($this->testCase &&
+                    class_exists($this->name, false) &&
+                    method_exists($this->name, $beforeClassMethod)) {
+                    if ($missingRequirements = TestUtil::getMissingRequirements($this->name, $beforeClassMethod)) {
+                        $this->markTestSuiteSkipped(implode(PHP_EOL, $missingRequirements));
                     }
 
-                    $result->startTest($test);
-
-                    if (!$errorAdded) {
-                        $result->addError($test, $t, 0);
-
-                        $errorAdded = true;
-                    } else {
-                        $result->addFailure(
-                            $test,
-                            new SkippedTestError('Test skipped because of an error in hook method'),
-                            0
-                        );
-                    }
-
-                    $result->endTest($test, 0);
+                    call_user_func([$this->name, $beforeClassMethod]);
                 }
-
-                $result->endTestSuite($this);
-
-                return $result;
             }
+        } catch (SkippedTestSuiteError $error) {
+            foreach ($this->tests() as $test) {
+                $result->startTest($test);
+                $result->addFailure($test, $error, 0);
+                $result->endTest($test, 0);
+            }
+
+            $result->endTestSuite($this);
+
+            return $result;
+        } catch (Throwable $t) {
+            $errorAdded = false;
+
+            foreach ($this->tests() as $test) {
+                if ($result->shouldStop()) {
+                    break;
+                }
+
+                $result->startTest($test);
+
+                if (!$errorAdded) {
+                    $result->addError($test, $t, 0);
+
+                    $errorAdded = true;
+                } else {
+                    $result->addFailure(
+                        $test,
+                        new SkippedTestError('Test skipped because of an error in hook method'),
+                        0
+                    );
+                }
+
+                $result->endTest($test, 0);
+            }
+
+            $result->endTestSuite($this);
+
+            return $result;
         }
 
         foreach ($this as $test) {
@@ -677,22 +669,22 @@ class TestSuite implements IteratorAggregate, Reorderable, SelfDescribing, Test
             $test->run($result);
         }
 
-        if ($this->testCase && class_exists($this->name, false)) {
-            foreach ($hookMethods['afterClass'] as $afterClassMethod) {
-                if (method_exists($this->name, $afterClassMethod)) {
-                    try {
-                        call_user_func([$this->name, $afterClassMethod]);
-                    } catch (Throwable $t) {
-                        $message = "Exception in {$this->name}::{$afterClassMethod}" . PHP_EOL . $t->getMessage();
-                        $error   = new SyntheticError($message, 0, $t->getFile(), $t->getLine(), $t->getTrace());
+        foreach ($hookMethods['afterClass'] as $afterClassMethod) {
+            if ($this->testCase &&
+                class_exists($this->name, false) &&
+                method_exists($this->name, $afterClassMethod)) {
+                try {
+                    call_user_func([$this->name, $afterClassMethod]);
+                } catch (Throwable $t) {
+                    $message = "Exception in {$this->name}::{$afterClassMethod}" . PHP_EOL . $t->getMessage();
+                    $error   = new SyntheticError($message, 0, $t->getFile(), $t->getLine(), $t->getTrace());
 
-                        $placeholderTest = clone $test;
-                        $placeholderTest->setName($afterClassMethod);
+                    $placeholderTest = clone $test;
+                    $placeholderTest->setName($afterClassMethod);
 
-                        $result->startTest($placeholderTest);
-                        $result->addFailure($placeholderTest, $error, 0);
-                        $result->endTest($placeholderTest, 0);
-                    }
+                    $result->startTest($placeholderTest);
+                    $result->addFailure($placeholderTest, $error, 0);
+                    $result->endTest($placeholderTest, 0);
                 }
             }
         }
