@@ -16,7 +16,7 @@ class profileC extends Controller
         dd($id);
     
     }
-    public function profile()
+    public function profile(Request $req)
     {
         $id=Auth::id();
     
@@ -46,18 +46,22 @@ class profileC extends Controller
             'reviews'=>$reviews
             
         ];
-        if($user->type=='tutor'){
-            return view('layout.portfolio',['show'=>$show ]);
-        } 
-        else
-        {
-            return view('layout.portfolios',['show'=>$show ]);
 
-        }
+          if( $req->is('api/*')){
+            return ['status' => true, 'data' => $show];
+        } else {
+            if($user->type=='tutor'){
+                return view('layout.portfolio',['show'=>$show ]);
+            } 
+            else
+            {
+                return view('layout.portfolios',['show'=>$show ]);
+    
+            }
+        }            
+        
     }
-       
-     
-    }
+ }
     public function editp()
     {
     $id=Auth::id();
@@ -113,9 +117,12 @@ class profileC extends Controller
 
         ];
         profile::where('user_id', $user)->update($update);
-
     }
+    if( $req->is('api/*')){
+        return ['status' => true, 'message' => 'profile is updated'];
+    } else {
         return redirect()->back()->with('success','profile updated succesfully');
+    }
      
     }
 

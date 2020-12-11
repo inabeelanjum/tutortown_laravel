@@ -22,10 +22,7 @@ use App\Http\Controllers\reviewController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::post('/replyr/{id}', [requestController::class ,'replyr'])->name('replyr');
-Route::get('/requests', [requestController::class ,'show'])->name('requests');
-Route::post('/creater', [requestController::class ,'creater'])->name('creater');
-Route::post('/review/{id}', [reviewController::class ,'review_submit'])->name('review');
+
 Route::post('/search', [search::class ,'searchtutor'])->name('search');
 Route::post('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
@@ -48,9 +45,14 @@ Route::group(['middleware' => ['auth:api']], function () {
     @Problem: following line was commented out in App\Providers\RouteServiceProvider.php
     protected $namespace = 'App\\Http\\Controllers';
     */
+    Route::post('/replyr/{id}', [requestController::class ,'replyr'])->name('replyr');
+    Route::post('/review/{id}', [reviewController::class ,'review_submit'])->name('review');
     Route::any('/user', [AuthController::class ,'user'])->name('user');
     Route::get('/tutor/profile/{id}', [TutorsController::class ,'tutor_profile'])->name('tutor_profile');
-    
+    Route::get('/requests', [requestController::class ,'show'])->name('requests');
+    Route::post('/creater', [requestController::class ,'creater'])->name('creater');
+    Route::get('/profile', [profileC::class ,'profile']);
+    Route::post('/editpro', [profileC::class ,'editpro'])->name('editpro');
 });
 
 Route::any('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
