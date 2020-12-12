@@ -10,9 +10,50 @@ use App\Models\hiring;
 
 class msgsController extends Controller
 {
-   public function chat()
+   public function chat(Request $request)
    {
-       return view('layout.chat');
+       // get list of tutors had chat with.
+       $sender_id = Auth::user()->id;
+       $messages = msgs::where(function($query) use ($sender_id) {
+                    $query->where('sender_id', $sender_id);
+                })->orWhere(function($query) use ($sender_id) {
+                    $query->where('receiver_id', $sender_id);
+                })->get();
+        $sidebar_users = [];
+        if(count($messages)) {
+            foreach($messages as $k => $user) {
+                $id = ($user->sender_id == $sender_id) ? $user->receiver_id : $user->sender_id;
+                if(!isset($sidebar_users[$id])) {
+                    $sidebar_users[$id] = User::where('id', $id)->with('profile')->first();
+                }
+            }
+            $receiver_id = array_values($sidebar_users)[0]->id;
+            // check if student has already hired this tutor
+            $sidebar_users = [];
+            $messages = msgs::where(function($query) use ($sender_id, $receiver_id) {
+                                $query->where('sender_id', $sender_id)->where('receiver_id', $receiver_id);
+                        })->orWhere(function($query) use ($sender_id, $receiver_id) {
+                            $query->where('sender_id', $receiver_id)->where('receiver_id', $sender_id);
+                        })
+                        ->get();
+            if(count($messages)) {
+                foreach($messages as $k => $user) {
+                    $id = ($user->sender_id == $sender_id) ? $user->receiver_id : $user->sender_id;
+                    if(!isset($sidebar_users[$id])) {
+                        $sidebar_users[$id] = User::where('id', $id)->with('profile')->first();
+                    }
+                }
+                
+            }
+            // check if student has already hired this tutor
+            $if_hired = hiring::where('sender_id', $sender_id)->where('receiver_id', $receiver_id)->first();
+        }
+        $resp = ['status' => true, 'messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id, 'if_hired' => $if_hired];
+        if( $request->is('api/*')){
+            return $resp;
+        } else {
+            return view('layout.chat', $resp);
+        }
    }
    public function student_to_tutor_chat(Request $request, $tutor_id )
    {    
