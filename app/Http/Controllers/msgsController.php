@@ -139,7 +139,12 @@ class msgsController extends Controller
                 }
                 
             }
-            return view('layout.chat', ['messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id]);
+            $resp = ['messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id];
+            if( $request->is('api/*')){
+                return $resp;
+            } else {
+                return view('layout.chat', $resp);
+            }
 
         } else {
             return view('not-found');
@@ -218,6 +223,40 @@ class msgsController extends Controller
             $ret['htm'] = $htm;
 
         }
+        return $ret;
+    }
+   function messgae_heartbeat_android(Request $request, $user_id) {
+        
+        $ret = ['success' => false, 'message' => 'Invalid request'];
+        
+        $sender_id = Auth::user()->id;
+        $receiver_id = $user_id;
+        $messages = msgs::where(function($query) use ($sender_id, $receiver_id) {
+            $query->where('sender_id', $sender_id)->where('receiver_id', $receiver_id);
+            })->orWhere(function($query) use ($sender_id, $receiver_id) {
+                $query->where('sender_id', $receiver_id)->where('receiver_id', $sender_id);
+            })
+            ->get();
+        
+        if(count($messages)) {
+            
+            foreach($messages as $k => $msg) {
+                // set message to read
+                if($msg->receiver_id == $sender_id) {
+                    $msg->status = 1;
+                    $msg->save();
+                } ?>
+                
+               
+                    
+            <?php 
+            }
+            
+            
+        }
+        $ret['success'] = true;
+        $ret['message'] = '';
+        $ret['data'] = $messages;
         return $ret;
     }
    
