@@ -27,6 +27,8 @@ class CreateProfilesTable extends Migration
             $table->string('subj4')->nullable()->default('N/A');
             $table->string('subj5')->nullable()->default('N/A');
             $table->string('subj6')->nullable()->default('N/A');
+            $table->char('lat')->nullable()->default('N/A');
+            $table->char('lang')->nullable()->default('N/A');
             $table->timestamps();
         });
     }

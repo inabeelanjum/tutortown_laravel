@@ -49,7 +49,7 @@ Route::post('/message-heartbeat/{id}', [msgsController::class ,'messgae_heartbea
 Route::post('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
 Route::get('/post-review/{id}', [reviewController::class ,'post_review_form']);
 Route::post('/review/{id}', [reviewController::class ,'review_submit'])->name('review');
-
+Route::post('/update-my-location', [search::class ,'updateloc'])->name('update-my-location');
 
 
 

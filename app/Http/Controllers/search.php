@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\Profile;
+use App\Models\User;
+
 
 class search extends Controller
 {
@@ -25,6 +27,20 @@ class search extends Controller
       return redirect('login');
     }
   }
+public function updateloc(Request $req)
+{
+$user=Auth::id();
+$pro= User::where('id', $user)->first();
+if ($req->has('lat'))
+{
+  $update = [
+    'lat' => $req->lat,
+    'lang' => $req->lang,
+  ];
+  User::where('id', $user)->update($update);
+}
+}
+
   public function searchtutor(Request $req)
   {
 	
