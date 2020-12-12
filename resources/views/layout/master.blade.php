@@ -47,7 +47,7 @@
                         $.ajax({
                             type:'POST',
                             url:'<?php echo url('/update-my-location')?>',
-                            data:'_token=<?php echo csrf_token() ?>&lat='+current_latitude+'&long='+current_longitude+'',
+                            data:'_token=<?php echo csrf_token() ?>&lat='+current_latitude+'&lang='+current_longitude+'',
                             success:function(data) {
                                 if(data.success == true) {
                                     $('.hire_me_alert').html(data.message).slideDown();

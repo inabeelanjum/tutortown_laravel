@@ -13,7 +13,7 @@ class profile extends Model
         'user_id','about','image','charges',
        'location',
        'phone',
-       'subj1','subj2','subj3','subj4','subj5','subj6', 
+       'subj1','subj2','subj3','subj4','subj5','subj6', 'lat','lang'
     ];
         
 }
