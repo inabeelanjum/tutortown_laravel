@@ -17,6 +17,40 @@
 
 <body class="bg-light">
 @if(Auth::check())
+<script>
+        console.log('alert');
+            var current_longitude = '';
+            var current_latitude = '';
+            if( navigator.geolocation ) {
+                navigator.geolocation.getCurrentPosition( success, fail );
+             } else {
+                 console.log('Sorry, your Browser does not support geolocation services');
+                 
+             }
+         
+             function success(position)
+             {
+                 /* document.getElementById('long').value = position.coords.longitude;
+                 document.getElementById('lat').value = position.coords.latitude; */
+         
+                 if(position.coords.longitude != "" && position.coords.latitude != ""){
+                     current_longitude = position.coords.longitude;
+                     current_latitude = position.coords.latitude;
+                 }
+                 console.log('current_longitude');
+                 console.log(current_longitude);
+                 console.log(current_latitude);
+                 
+             }
+         
+             function fail()
+             {
+                 // Could not obtain location
+                 console.log('unable to get your location');
+                 
+             }
+        
+</script>
 <nav class="navbar navbar-light navbar-expand-md">
         <div class="container-fluid"><a class="navbar-brand" href="#" style="color: rgb(0,0,0);font-family: Poppins, sans-serif;font-size: 36px;font-weight: bold;font-style: normal;">Tutor Town</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon" id="togle"></span></button>
             <div
