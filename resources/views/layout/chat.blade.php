@@ -23,7 +23,7 @@
         background-color: #007bff;
       }
     </style>
-
+@if(count($messages) > 20 )
 <div class="bootstrap_chat">
 <div class="container py-5 px-4">
 
@@ -92,6 +92,7 @@
 						<?php } ?>
 					<?php } ?>
 				<?php } ?>
+
 			</div>
 
         
@@ -127,6 +128,12 @@
 </div>
 </div>
 <style>
+.chat_wrapper
+{
+  height:300px;
+  overflow-y:auto;
+}
+
 	.overlay_wrapper {
 		width: 100%;
 		height: 100%;
@@ -136,6 +143,7 @@
 		z-index: 1000;
 		background: rgba(255,255,255,0.8);
 		display: none;
+
 	}
 	.overlay_wrapper .overlay {
 		width: 150px;
@@ -226,4 +234,16 @@
 		});
 	})(jQuery);
 </script>
+@else
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+
+<div class="alert hire_me_alert alert-info" role="alert">you dont have any messages</div>
+</div>
+</div>
+
+</div>
+
+@endif
 @endsection

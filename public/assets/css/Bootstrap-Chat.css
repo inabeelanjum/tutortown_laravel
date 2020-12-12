@@ -15,4 +15,9 @@
 .rounded-lg {
   border-radius: 0.5rem;
 }
+.chat_wrapper
+{
+  height:300px;
+  overflow-y:auto;
+}
 
