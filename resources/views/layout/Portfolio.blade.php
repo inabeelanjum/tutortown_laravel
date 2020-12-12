@@ -24,7 +24,7 @@
           <div class="card mb-4">
           	<h2 class="card-header text-center">{{$show['name']}}</h2>
             
-          	<img src="assets/img/port.jpeg" alt="Portrait of Firstname Lastname" class="w-100" height='500px'>
+          	<img src="<?php echo url('/files/'.$show['image'])?>" alt="Portrait of Firstname Lastname" class="w-100" height='500px'>
             <div class="card-body">
 							<h3 class="card-text">About</h3>
 

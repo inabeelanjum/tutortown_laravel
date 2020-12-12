@@ -13,7 +13,8 @@ class msgsController extends Controller
    public function chat(Request $request)
    {
        // get list of tutors had chat with.
-       $sender_id = Auth::user()->id;
+       $current_user = Auth::user();
+       $sender_id = $current_user->id;
        $messages = msgs::where(function($query) use ($sender_id) {
                     $query->where('sender_id', $sender_id);
                 })->orWhere(function($query) use ($sender_id) {
@@ -46,9 +47,18 @@ class msgsController extends Controller
                 
             }
             // check if student has already hired this tutor
-            $if_hired = hiring::where('sender_id', $sender_id)->where('receiver_id', $receiver_id)->first();
+
+            $if_hiring_request = (object) [];
+            $if_hired = (object) [];
+            if($current_user->type == 'user') {
+                $if_hired = hiring::where('sender_id', $sender_id)->where('receiver_id', $receiver_id)->first();
+            }
+            if($current_user->type == 'tutor') {
+                $if_hiring_request = hiring::where('sender_id', $receiver_id)->where('receiver_id', $sender_id)->where('status', 0)->first();
+            }
+            
         }
-        $resp = ['status' => true, 'messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id, 'if_hired' => $if_hired];
+        $resp = ['status' => true, 'messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id, 'if_hired' => $if_hired, 'if_hiring_request' => $if_hiring_request];
         if( $request->is('api/*')){
             return $resp;
         } else {
@@ -139,7 +149,9 @@ class msgsController extends Controller
                 }
                 
             }
-            $resp = ['messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id];
+            $if_hiring_request = hiring::where('sender_id', $receiver_id)->where('receiver_id', $sender_id)->where('status', 0)->first();
+
+            $resp = ['messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id, 'if_hiring_request' => $if_hiring_request];
             if( $request->is('api/*')){
                 return $resp;
             } else {
@@ -149,6 +161,21 @@ class msgsController extends Controller
         } else {
             return view('not-found');
         }
+   }
+   function respond_hiring_request(Request $request, $id) {
+       $ret = [];
+        $if_hiring_request = hiring::where('id', $id)->where('status', 0)->first();
+        if($if_hiring_request) {
+            $if_hiring_request->status = ($request->type == 'approve') ? 1 : 2; // 1 accept, 2 reject
+            $if_hiring_request->save();
+            $ret =  ['status'=> true, 'message' => 'Request has been '. (($request->type == 'approve') ? 'approved.': 'rejected.') ];
+            
+        } else {
+            // return error
+            $ret =  ['status'=> false, 'message' => 'Invalid request'];
+        }
+        return $ret;
+
    }
    function send_message(Request $request, $user_id) {
         

@@ -89,7 +89,7 @@
                    
                     @endif
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{url('/profile')}}" style="color: rgb(0,0,0);">Profile&nbsp; &nbsp; &nbsp;</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color: rgb(0,0,0);">Messages&nbsp; &nbsp; &nbsp;</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{url('/chat')}}" style="color: rgb(0,0,0);">Messages&nbsp; &nbsp; &nbsp;</a></li>
                    
                     
                     @guest

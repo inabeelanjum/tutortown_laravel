@@ -40,7 +40,7 @@ if ($req->has('lat'))
   public function searchtutor(Request $req)
   {
 	
-		$s=$req->search_item;
+    $s=$req->search_item;
 		$tutors=profile::query()
 			->where('subj1', 'LIKE', "%{$s}%") 
 			->orWhere('subj2', 'LIKE', "%{$s}%") 
@@ -48,7 +48,8 @@ if ($req->has('lat'))
 			->orWhere('subj4', 'LIKE', "%{$s}%")
 			->orWhere('subj5', 'LIKE', "%{$s}%")
 			->orWhere('subj6', 'LIKE', "%{$s}%")    
-			->get();
+      ->get();
+     
 
 		if( $req->is('api/*')){
 			return ['status' => true, 'data' => $tutors];

@@ -23,7 +23,7 @@
         background-color: #007bff;
       }
     </style>
-@if(count($messages) > 20 )
+@if(count($messages) > 0 )
 <div class="bootstrap_chat">
 <div class="container py-5 px-4">
 
@@ -107,19 +107,31 @@
 
 			</div>
 		</form>
-		@if(Auth::user()->type =='user')
 	</div>
- 	<?php if(isset($if_hired) && $if_hired->status == 0) { ?>
-		<div class="alert hire_me_alert alert-info" role="alert">A hiring request has been sent to Tutor.</div>
- 	<?php } else if(isset($if_hired) && $if_hired->status == 1) { ?> 
-		<div class="alert hire_me_alert alert-info" role="alert" style="overflow: hidden;">You have hired this tutor. <a  class="btn btn-primary float-right" href="<?php echo url('/post-review/'.$active_user) ?> ">Post Review</a></div>
-	<?php } else {  ?>
- 		<a id ='btnh' class="btn hire_me btn-success" >Hire Me</a>
- 		<div class="alert hire_me_alert alert-success" role="alert" style="display: none;">
- 	<?php } ?>
+	@if(Auth::user()->type =='user' && isset($if_hired) && isset($if_hired->status))
+		<?php if(isset($if_hired) && $if_hired->status == 0) { ?>
+			<div class="alert hire_me_alert alert-info" role="alert">A hiring request has been sent to Tutor.</div>
+		<?php } else if(isset($if_hired) && $if_hired->status == 1) { ?> 
+			<div class="alert hire_me_alert alert-info" role="alert" style="overflow: hidden;">You have hired this tutor. <a  class="btn btn-primary float-right" href="<?php echo url('/post-review/'.$active_user) ?> ">Post Review</a></div>
+		<?php } else {  ?>
+			<a id ='btnh' class="btn hire_me btn-success" >Hire Me</a>
+			<div class="alert hire_me_alert alert-success" role="alert" style="display: none;">
+		<?php } ?>
+	@endif
+	@if(Auth::user()->type =='tutor'  && isset($if_hiring_request) && isset($if_hiring_request->status))
+		<?php if(isset($if_hiring_request) && $if_hiring_request->status == 0) { ?>
+			<div class="buttons text-center;">
+				<div class="alert alert-info request_hiring_info">You have hiring request from this student.</div>
+				<a class="btn btn-success approve_hiring" data-id="<?php echo $if_hiring_request->id?>" data-type="approve">Approve</a> &nbsp;
+				<a class="btn btn-danger reject_hiring" data-id="<?php echo $if_hiring_request->id?>" data-type="reject">Reject</a>
+				<div class="alert hire_me_success_alert alert-success" role="alert" style="display: none;"></div>
+				<div class="alert hire_me_error_alert alert-danger" role="alert" style="display: none;"></div>
+				
+			</div>
+		<?php }?>
+	@endif
   
 </div>
-@endif
  <!--hire me button-->
 
 	</div>
@@ -231,6 +243,35 @@
 				});
 
 			});
+			$('body').on('click','.approve_hiring,.reject_hiring',function(){
+				$('.overlay_wrapper').show();
+				var id = $(this).attr('data-id');
+				var type = $(this).attr('data-type');
+
+				var action = '<?php echo url('/respond-hiring-request/'); ?>/'+id;
+				$.ajax({
+					type:'POST',
+					url:action,
+					data:'_token=<?php echo csrf_token() ?>&type='+type,
+					success:function(data) {
+						if(data.status == true) {
+							$('.hire_me_success_alert').html(data.message).slideDown();
+							$('.approve_hiring,.reject_hiring,.request_hiring_info').remove();
+						} else {
+							$('.hire_me_error_alert').html(data.message).slideDown();
+
+						}
+						
+						
+					}, 
+					error: function(){
+						$('.overlay_wrapper').hide();
+					}
+				});
+
+			});
+			
+			
 		});
 	})(jQuery);
 </script>
