@@ -55,6 +55,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('/editpro', [profileC::class ,'editpro'])->name('editpro');
     Route::any('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
     Route::get('/notifications', [notiController::class ,'all_notifications'])->name('notifications');
+    Route::post('/message-heartbeat/{id}', [msgsController::class ,'messgae_heartbeat_android'])->name('messgae_heartbeat_android');
+
 });
 
 Route::any('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
