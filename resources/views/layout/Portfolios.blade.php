@@ -25,7 +25,7 @@
           <div class="card mb-4">
           	<h2 class="card-header text-center">{{$show['name']}}</h2>
             
-          	<img src= "/storage/{{$show['image']}}" alt="image" class="w-100" height='500px'>
+          	<img src= "<?php echo url('/files/'.$show['image'])?>" alt="image" class="w-100" height='500px'>
             <div class="card-body">
 							<h3 class="card-text">About</h3>
 							<p class="card-text">{{$show['about']}}</p>
