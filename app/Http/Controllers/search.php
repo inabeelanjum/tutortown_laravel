@@ -39,6 +39,7 @@ if ($req->has('lat'))
   ];
   User::where('id', $user)->update($update);
 }
+
 }
 
   public function searchtutor(Request $req)
@@ -59,6 +60,39 @@ if ($req->has('lat'))
 		} else {
 			return view('layout.result', ['tutors' => $tutors]);
 		}
+    
+    
+  }
+  public function searchNearByTutor(Request $req)
+  {
+	
+		$user = Auth::user();
+		$user_lat = $user->lat;
+		$user_lang = $user->lang; 
+		$nearByTutors = [];
+		$diff = 5;
+		if($user_lat != null && $user_lang != null) {
+			$tutors=User::where('type', 'tutor')->with('profile')->get();	
+			if($tutors) {
+				foreach($tutors as $k => $tutor) {
+					$tutor_lat = $tutor->lat;		
+					$tutor_lang = $tutor->lang;		
+					if($tutor_lat != null && $tutor_lang != null) {
+						$distance = $this->distance($user_lat, $user_lang, $tutor_lat, $tutor_lang, 'K');
+						if($distance <= $diff) {
+							$tutor->distance = $distance;
+							$nearByTutors[] = $tutor;
+						}
+
+					}
+				}
+			}
+		}
+			if( $req->is('api/*')){
+				return ['status' => true, 'data' => $nearByTutors];
+			} else {
+				return view('layout.result', ['tutors' => $nearByTutors]);
+			}
     
     
   }
