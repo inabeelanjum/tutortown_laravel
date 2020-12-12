@@ -55,7 +55,7 @@ class profileC extends Controller
             } 
             else
             {
-                return view('layout.portfolios',['show'=>$show ]);
+                return view('layout.Portfolios',['show'=>$show ]);
     
             }
         }            
