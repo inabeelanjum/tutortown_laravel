@@ -21,7 +21,7 @@
         </div>
         <div class="row flex-grow-1 flex-shrink-1 justify-content-center align-items-center align-content-center align-self-center" id="srow">
             <div class="col-auto align-self-end"><button type="submit" class="btn btn-success btn-block text-uppercase text-white d-flex flex-grow-1 flex-shrink-1 justify-content-center align-items-center"  id="btns">Search</button></div>
-            <div class="col-auto align-self-end"><a class="btn btn-info text-uppercase text-white d-flex flex-grow-1 flex-shrink-1 align-items-center" role="button" id="btns2"><i class="fa fa-location-arrow"></i>&nbsp; View nearby</a></div>
+            <div class="col-auto align-self-end"><a class="btn btn-info text-uppercase text-white d-flex flex-grow-1 flex-shrink-1 align-items-center" href="{{url ('/nearby')}}" id="btns2"><i class="fa fa-location-arrow"></i>&nbsp; View nearby</a></div>
 </form>
         </div>
 

@@ -53,7 +53,9 @@ Route::post('/update-my-location', [search::class ,'updateloc'])->name('update-m
 
 
 
+
 Route::get('/editp', [profileC::class ,'editp'])->name('editp');
+Route::get('/nearby', [search::class ,'searchNearByTutor'])->name('nearby');
 
 Route::get('/profile', [profileC::class ,'profile']);
 Route::get('/pro', [profileC::class ,'index']);

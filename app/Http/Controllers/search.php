@@ -13,12 +13,6 @@ class search extends Controller
 {
   public function index()
   {
-	$lat1 = '33.627603325927424';    
-	$lang1 = '73.03328330523966' ;   
-	$lat2 = '34.00443441471939' ;   
-	$lang2 = '73.76972818372637' ;   
-	echo $this->distance($lat1, $lang1, $lat2, $lang2, 'K');
-	exit;
     if(Auth::check())
     {
       return view('layout/home');
