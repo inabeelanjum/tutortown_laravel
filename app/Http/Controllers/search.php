@@ -13,6 +13,7 @@ class search extends Controller
 {
   public function index()
   {
+	
     if(Auth::check())
     {
       return view('layout/home');
