@@ -22,11 +22,21 @@
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto" style="font-size: 18px;">
-                    <li class="nav-item" role="presentation" style="font-size: 16px;"><a class="nav-link active" href="{{url('/requests')}}" style="color: rgb(0,,0,0);font-size: 20px;">Requests&nbsp; &nbsp; &nbsp;</a></li>
+                @if(Auth::User()->type=='tutor')
+
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{{url('/notifications')}}" style="color: rgb(0,0,0);">Notifications&nbsp; &nbsp; &nbsp;</a></li>   
+                 <li class="nav-item" role="presentation" style="font-size: 16px;"><a class="nav-link active" href="{{url('/requests')}}" style="color: rgb(0,,0,0);font-size: 20px;">Requests&nbsp; &nbsp; &nbsp;</a></li>
+                   @else
+                   <li class="nav-item" role="presentation" style="font-size: 16px;"><a class="nav-link active" href="{{url('/postr')}}" style="color: rgb(0,,0,0);font-size: 20px;">Post Requests&nbsp; &nbsp; &nbsp;</a></li>
+                   <li class="nav-item" role="presentation" style="font-size: 16px;"><a class="nav-link active" href="{{url('/')}}" style="color: rgb(0,,0,0);font-size: 20px;">Search&nbsp; &nbsp; &nbsp;</a></li>
+                
+                   
+                   
+                    @endif
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{{url('/profile')}}" style="color: rgb(0,0,0);">Profile&nbsp; &nbsp; &nbsp;</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="#" style="color: rgb(0,0,0);">Messages&nbsp; &nbsp; &nbsp;</a></li>
                    
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{{url('/notifications')}}" style="color: rgb(0,0,0);">Notifications&nbsp; &nbsp; &nbsp;</a></li>
+                    
                     @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

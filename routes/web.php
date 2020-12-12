@@ -29,7 +29,7 @@ Route::get('/proi', function () {
     
 });
 // make authenticated routes.
-Route::get('/notifications', [notiController::class ,'index'])->name('notifications');
+Route::get('/notifications', [notiController::class ,'all_notifications'])->name('notifications');
 Route::get('/request', [requestController::class ,'index'])->name('request');
 Route::get('/postr', [requestController::class ,'postr'])->name('postr');
 Route::post('/creater', [requestController::class ,'creater'])->name('creater');

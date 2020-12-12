@@ -80,7 +80,14 @@ class profileC extends Controller
     {
         $user = Auth::id();
         $pro= profile::where('user_id', $user)->first();
-        $image = $req->file('file')->store('public');
+        if ($req->hasFile('file'))
+        {
+            $image = $req->file('file')->store('public');
+        }
+        else{
+
+            $image= null;
+        }
         if ( empty($pro )) {
             profile::create([
                 'user_id' => $user,
