@@ -19,36 +19,57 @@
 @if(Auth::check())
 <script>
         console.log('alert');
-            var current_longitude = '';
-            var current_latitude = '';
-            if( navigator.geolocation ) {
-                navigator.geolocation.getCurrentPosition( success, fail );
-             } else {
-                 console.log('Sorry, your Browser does not support geolocation services');
-                 
-             }
-         
-             function success(position)
-             {
-                 /* document.getElementById('long').value = position.coords.longitude;
-                 document.getElementById('lat').value = position.coords.latitude; */
-         
-                 if(position.coords.longitude != "" && position.coords.latitude != ""){
-                     current_longitude = position.coords.longitude;
-                     current_latitude = position.coords.latitude;
-                 }
-                 console.log('current_longitude');
-                 console.log(current_longitude);
-                 console.log(current_latitude);
-                 
-             }
-         
-             function fail()
-             {
-                 // Could not obtain location
-                 console.log('unable to get your location');
-                 
-             }
+        /* $('body').on('click', 'button', function(){ */
+
+        
+            (function($){
+                $(document).ready(function(){
+                    var current_longitude = '';
+                    var current_latitude = '';
+                    if( navigator.geolocation ) {
+                        navigator.geolocation.getCurrentPosition( success, fail );
+                    } else {
+                        console.log('Sorry, your Browser does not support geolocation services');
+                    }
+                
+                    function success(position)
+                    {
+                        /* document.getElementById('long').value = position.coords.longitude;
+                        document.getElementById('lat').value = position.coords.latitude; */
+                
+                        if(position.coords.longitude != "" && position.coords.latitude != ""){
+                            current_longitude = position.coords.longitude;
+                            current_latitude = position.coords.latitude;
+                        }
+                        console.log('current_longitude');
+                        console.log(current_longitude);
+                        console.log(current_latitude);
+                        $.ajax({
+                            type:'POST',
+                            url:'<?php echo url('/update-my-location')?>',
+                            data:'_token=<?php echo csrf_token() ?>&lat='+current_latitude+'&long='+current_longitude+'',
+                            success:function(data) {
+                                if(data.success == true) {
+                                    $('.hire_me_alert').html(data.message).slideDown();
+                                }
+                                
+                                
+                            }, 
+                            error: function(){
+                                $('.overlay_wrapper').hide();
+                            }
+                        });
+                    }
+                
+                    function fail()
+                    {
+                        // Could not obtain location
+                        console.log('unable to get your location');
+                        
+                    }
+                });
+            })(jQuery);
+        /* }); */
         
 </script>
 <nav class="navbar navbar-light navbar-expand-md">
