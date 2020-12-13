@@ -43,7 +43,7 @@ class profileC extends Controller
             'subj4'  => $show->subj4,
             'subj5'  => $show->subj5,
             'subj6'  => $show->subj6,
-            'reviews'=>$reviews
+            'reviews'=> $reviews
             
         ];
 

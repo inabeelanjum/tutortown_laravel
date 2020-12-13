@@ -58,7 +58,7 @@ class msgsController extends Controller
             }
             
         }
-        $resp = ['status' => true, 'messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id, 'if_hired' => $if_hired, 'if_hiring_request' => $if_hiring_request];
+        $resp = ['status' => true, 'messages' => $messages, 'sidebar_users' => $sidebar_users, 'active_user' => $receiver_id , 'if_hired' => $if_hired, 'if_hiring_request' => $if_hiring_request];
         if( $request->is('api/*')){
             return $resp;
         } else {

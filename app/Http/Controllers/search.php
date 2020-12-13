@@ -47,7 +47,7 @@ if ($req->has('lat'))
 			->orWhere('subj3', 'LIKE', "%{$s}%")
 			->orWhere('subj4', 'LIKE', "%{$s}%")
 			->orWhere('subj5', 'LIKE', "%{$s}%")
-			->orWhere('subj6', 'LIKE', "%{$s}%")    
+			->orWhere('subj6', 'LIKE', "%{$s}%")->with('user')    
       ->get();
      
 
@@ -87,7 +87,7 @@ if ($req->has('lat'))
 			if( $req->is('api/*')){
 				return ['status' => true, 'data' => $nearByTutors];
 			} else {
-				return view('layout.result', ['tutors' => $nearByTutors]);
+				return view('layout.nearby', ['tutors' => $nearByTutors]);
 			}
     
     

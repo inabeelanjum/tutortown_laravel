@@ -21,7 +21,7 @@
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        <h2><a href="#">{{$tutor->name}}</a></h2>
+                        <h2><a href="#">{{$tutor->user->name}}</a></h2>
                     </div>
                    
                 </div>

@@ -23,13 +23,9 @@ use App\Http\Controllers\reviewController;
 |
 */
 
-Route::post('/search', [search::class ,'searchtutor'])->name('search');
-Route::post('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
    // return $request->user();
 //});
-Route::get('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat');
-Route::any('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
 Route::get('/', function () {
     //return view('welcome');
     $uSER = 
@@ -45,6 +41,20 @@ Route::group(['middleware' => ['auth:api']], function () {
     @Problem: following line was commented out in App\Providers\RouteServiceProvider.php
     protected $namespace = 'App\\Http\\Controllers';
     */
+    Route::post('/respond-hiring-request/{id}', [msgsController::class ,'respond_hiring_request'])->name('respond_hiring_request');
+    Route::post('/update-my-location', [search::class ,'updateloc'])->name('update-my-location');
+    Route::post('/send-message/{id}', [msgsController::class ,'send_message'])->name('send_message');
+    Route::get('/user/chat/{id}', [msgsController::class ,'tutor_to_student_chat'])->name('tutor_to_student_chat');
+    Route::post('/user/chat/{id}', [msgsController::class ,'tutor_to_student_chat'])->name('tutor_to_student_chat');
+    Route::get('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat');
+    Route::post('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat'); 
+
+    Route::get('/chat', [msgsController::class ,'chat'])->name('chat');
+
+    Route::get('/nearby', [search::class ,'searchNearByTutor'])->name('nearby');
+    Route::post('/search', [search::class ,'searchtutor'])->name('search');
+    Route::post('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
+    Route::any('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
     Route::post('/replyr/{id}', [requestController::class ,'replyr'])->name('replyr');
     Route::post('/review/{id}', [reviewController::class ,'review_submit'])->name('review');
     Route::any('/user', [AuthController::class ,'user'])->name('user');
@@ -56,6 +66,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::any('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
     Route::get('/notifications', [notiController::class ,'all_notifications'])->name('notifications');
     Route::post('/message-heartbeat/{id}', [msgsController::class ,'messgae_heartbeat_android'])->name('messgae_heartbeat_android');
+    Route::get('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat');
 
 });
 

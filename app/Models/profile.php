@@ -15,5 +15,9 @@ class profile extends Model
        'phone',
        'subj1','subj2','subj3','subj4','subj5','subj6', 'lat','lang'
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
         
 }
