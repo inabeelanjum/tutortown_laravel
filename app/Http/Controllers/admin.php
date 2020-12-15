@@ -22,6 +22,5 @@ class admin extends Controller
         }
     }
 
-   public function
 
 }
