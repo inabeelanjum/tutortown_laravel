@@ -31,6 +31,7 @@ class TutorsController extends Controller
         $reviews= reviews::where('tutor_id',$tutor_id)->simplePaginate(1);
        
         $show = [
+            'id' => $tutor_id,
             'name'  => $user->name,
             'type'=>$user->type,
             'email'  => $user->email,
@@ -44,6 +45,7 @@ class TutorsController extends Controller
             'subj4'  => $show->subj4,
             'subj5'  => $show->subj5,
             'subj6'  => $show->subj6,
+
             'reviews'=>$reviews
         ];
             if( $request->is('api/*')){

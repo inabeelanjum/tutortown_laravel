@@ -19,7 +19,11 @@
     <div class="container mt-4">
     
       <div class="row">
+      @if(Auth::id()== $show['id'])
       <a  href="{{ url('editp')}}" class="btn btn-success btn-lg btn-block">Edit Profile</a>
+      @else
+      <a href="{{ url('report/'.$show['id'])}}" class="btn btn-danger btn-lg btn-block">Report Profile</a>
+      @endif
         <div class="col-12 col-lg-8">
           <div class="card mb-4">
           	<h2 class="card-header text-center">{{$show['name']}}</h2>

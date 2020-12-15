@@ -20,7 +20,10 @@
     
       <div class="row">
       <a  href="{{ url('editp')}}" class="btn btn-success btn-lg btn-block">Edit Profile</a>
+      
+ 
         <div class="col-12 col-lg-8">
+      
           <div class="card mb-4">
           	<h2 class="card-header text-center">{{$show['name']}}</h2>
             
@@ -36,25 +39,22 @@
           	<h2 class="card-header text-center">Testimonials</h2>
             <div class="card-body">
             	<div id="carousel" class="carousel slide" data-ride="false">
-                <ol class="carousel-indicators mb-0">
-                  <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel" data-slide-to="1"></li>
-                  <li data-target="#carousel" data-slide-to="2"></li>
-                  <li data-target="#carousel" data-slide-to="3"></li>
-                  <li data-target="#carousel" data-slide-to="4"></li>
-                </ol>
+                
                 @if(count($show['reviews']))
                 <div class="carousel-inner">
                 @foreach($show['reviews'] as $k => $value)
                   <div class="carousel-item active">
                     <blockquote class="blockquote text-center d-flex flex-column justify-content-center">
                       <p class="mb-0">{{$value->message}}</p>
+                      
+                      <a href="{{ url('editp')}}" class="btn btn-success btn-block">Report</a>
                       <footer class="blockquote-footer"></footer>
                     </blockquote>
                   </div>
                   @endforeach
                      </div>
                      @endif
+                   
                  
               </div>
             </div>

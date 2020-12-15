@@ -10,6 +10,7 @@ use App\Http\Controllers\TutorsController;
 use App\Http\Controllers\hiringController;
 use App\Http\Controllers\search;
 use App\Http\Controllers\reviewController;
+use App\Http\Controllers\reportC;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,5 +71,8 @@ Route::get('/chat', [msgsController::class ,'chat']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admin', [App\Http\Controllers\admin::class, 'index'])->name('admin');
+Route::get('/report/{id}', [App\Http\Controllers\reportC::class, 'report'])->name('report');
+Route::post('/report_submit/{id}', [App\Http\Controllers\reportC::class, 'report_submit'])->name('report_submit');
 
 
