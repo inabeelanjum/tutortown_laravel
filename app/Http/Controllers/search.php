@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Models\Profile;
 use App\Models\User;
+use App\Models\skill;
 
 
 class search extends Controller
@@ -41,7 +42,7 @@ if ($req->has('lat'))
   {
 	
     $s=$req->search_item;
-		$tutors=profile::query()
+		$tutors=skill::query()
 			->where('subj1', 'LIKE', "%{$s}%") 
 			->orWhere('subj2', 'LIKE', "%{$s}%") 
 			->orWhere('subj3', 'LIKE', "%{$s}%")

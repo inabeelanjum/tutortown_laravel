@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Profile;
 use App\Models\reviews;
+use App\Models\skill;
 
 
 class TutorsController extends Controller
@@ -28,6 +29,7 @@ class TutorsController extends Controller
       
         $user= User::find($tutor_id);
         $show= profile::where('user_id', $tutor_id)->first();
+        $skill= skill::where('user_id', $tutor_id)->first();
         $reviews= reviews::where('tutor_id',$tutor_id)->simplePaginate(1);
        
         $show = [
@@ -39,12 +41,12 @@ class TutorsController extends Controller
             'about'  => $show->about,
             'location'  => $show->location,
             'phone'  => $show->phone,
-            'subj1'  => $show->subj1,
-            'subj2'  => $show->subj2,
-            'subj3'  => $show->subj3,
-            'subj4'  => $show->subj4,
-            'subj5'  => $show->subj5,
-            'subj6'  => $show->subj6,
+            'subj1'  => $skill->subj1,
+            'subj2'  => $skill->subj2,
+            'subj3'  => $skill->subj3,
+            'subj4'  => $skill->subj4,
+            'subj5'  => $skill->subj5,
+            'subj6'  => $skill->subj6,
 
             'reviews'=>$reviews
         ];

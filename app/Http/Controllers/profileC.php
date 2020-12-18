@@ -7,6 +7,7 @@ use Auth;
 use App\Models\profile;
 use App\Models\reviews;
 use App\Models\User;
+use App\Models\skill;
 
 class profileC extends Controller
 {
@@ -22,6 +23,7 @@ class profileC extends Controller
     
         $user= User::find($id);
         $show= profile::where('user_id', $id)->first();
+        $skill= skill::where('user_id', $id)->first();
         $reviews= reviews::where('tutor_id',$id)->get();
         if ( empty($show )) {
             
@@ -37,12 +39,12 @@ class profileC extends Controller
             'about'  => $show->about,
             'location'  => $show->location,
             'phone'  => $show->phone,
-            'subj1'  => $show->subj1,
-            'subj2'  => $show->subj2,
-            'subj3'  => $show->subj3,
-            'subj4'  => $show->subj4,
-            'subj5'  => $show->subj5,
-            'subj6'  => $show->subj6,
+            'subj1'  => $skill->subj1,
+            'subj2'  => $skill->subj2,
+            'subj3'  => $skill->subj3,
+            'subj4'  => $skill->subj4,
+            'subj5'  => $skill->subj5,
+            'subj6'  => $skill->subj6,
             'reviews'=> $reviews
             
         ];
@@ -96,34 +98,39 @@ class profileC extends Controller
             'location' =>$req->location,
             'charges' => $req->charges,
             'phone' => $req->phone,
-            'subj1' =>$req->subj1,
-            'subj2' =>$req->subj2,
-            'subj3' =>$req->subj3,
-            'subj4' =>$req->subj4,
-            'subj5' =>$req->subj5,
-            'subj6' =>$req->subj6,
+            ]);
+            skill::create([
+                'user_id' => $user,
+                'subj1' =>$req->subj1,
+                'subj2' =>$req->subj2,
+                'subj3' =>$req->subj3,
+                'subj4' =>$req->subj4,
+                'subj5' =>$req->subj5,
+                'subj6' =>$req->subj6,
+
             ]);
           }
           else{
-        $req -> validate([
-           // 'requestr'=> 'required|min:20|max:300',
-        ]);
-    
         $update =[
             'about' => $req->about,
             'image' =>$image,
             'location' =>$req->location,
             'charges' => $req->charges,
             'phone' => $req->phone,
+          
+
+        ];
+
+        $update_skills =[
             'subj1' =>$req->subj1,
             'subj2' =>$req->subj2,
             'subj3' =>$req->subj3,
             'subj4' =>$req->subj4,
             'subj5' =>$req->subj5,
             'subj6' =>$req->subj6,
-
         ];
         profile::where('user_id', $user)->update($update);
+        skill::where('user_id', $user)->update($update_skills);
     }
     if( $req->is('api/*')){
         return ['status' => true, 'message' => 'profile is updated'];

@@ -15,7 +15,7 @@
             <div class="form-group"><button class="btn btn-danger" type="submit">Report</button></div>
         </form>
         @if(session() -> has('fail'))
-     <div class= "alert alert-success">
+     <div class= "alert alert-danger">
       {{ session() -> get('fail')}}
      </div>
 

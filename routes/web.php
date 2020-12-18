@@ -72,6 +72,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin', [App\Http\Controllers\admin::class, 'index'])->name('admin');
+Route::get('/warning/{id}', [App\Http\Controllers\admin::class, 'warning'])->name('warning');
+Route::get('/delete_account/{id}', [App\Http\Controllers\admin::class, 'delete_account'])->name('delete_account');
+Route::get('/delete_comment/{id}', [App\Http\Controllers\admin::class, 'delete_comment'])->name('delete_comment');
+Route::get('/delete/{id}', [App\Http\Controllers\admin::class, 'delete_request'])->name('delete');
+Route::get('/report_comment/{id}', [App\Http\Controllers\reportC::class, 'report_comment'])->name('report_comment');
 Route::get('/report/{id}', [App\Http\Controllers\reportC::class, 'report'])->name('report');
 Route::post('/report_submit/{id}', [App\Http\Controllers\reportC::class, 'report_submit'])->name('report_submit');
 

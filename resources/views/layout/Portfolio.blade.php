@@ -46,15 +46,29 @@
                   <div class="carousel-item active">
                     <blockquote class="blockquote text-center d-flex flex-column justify-content-center">
                       <p class="mb-0">{{$value->message}}</p>
+                      <form action="{{ url('report_comment/'.$value->id)}}">
+                       <input type="hidden" name='comment' value='{{$value->message}}'>
                       
-                      <a href="{{ url('editp')}}" class="btn btn-success btn-block">Report</a>
+                      <button class="btn btn-success btn-block" type='submit'>Report</button>
+                      </form>
                       <footer class="blockquote-footer"></footer>
                     </blockquote>
                   </div>
                   @endforeach
                      </div>
+                     
                      @endif
-                   
+                     @if(session() -> has('success'))
+     <div class= "alert alert-success">
+      {{ session() -> get('success')}}
+     </div>
+
+     @elseif(session() -> has('fail'))
+     <div class= "alert alert-danger">
+      {{ session() -> get('fail')}}
+     </div>
+
+     @endif
                  
               </div>
             </div>

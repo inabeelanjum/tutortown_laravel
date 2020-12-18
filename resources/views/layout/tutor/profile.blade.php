@@ -17,12 +17,28 @@
   
 
     <div class="container mt-4">
+    <div class="contact-clean">
+    @if(session() -> has('success'))
+     <div class= "alert alert-success">
+      {{ session() -> get('success')}}
+     </div>
+
+     @elseif(session() -> has('fail'))
+     <div class= "alert alert-danger">
+      {{ session() -> get('fail')}}
+     </div>
+
+     @endif
     
       <div class="row">
+    
       @if(Auth::id()== $show['id'])
       <a  href="{{ url('editp')}}" class="btn btn-success btn-lg btn-block">Edit Profile</a>
-      @else
-      <a href="{{ url('report/'.$show['id'])}}" class="btn btn-danger btn-lg btn-block">Report Profile</a>
+      @elseif(Auth::user()->type == 'admin')
+      <a href="{{ url('warning/'.$show['id'])}}" class="btn btn-warning btn-lg btn-block" style='color:white'>Send Warning</a>
+      <a href="{{ url('delete_account/'.$show['id'])}}" class="btn btn-danger btn-lg btn-block">Delete Profile</a>
+       @else
+       <a href="{{ url('report/'.$show['id'])}}" class="btn btn-danger btn-lg btn-block">Report Profile</a>
       @endif
         <div class="col-12 col-lg-8">
           <div class="card mb-4">
