@@ -50,7 +50,8 @@ class profileC extends Controller
         ];
 
           if( $req->is('api/*')){
-            return ['status' => true, 'data' => $show];
+            $show_api= profile::where('user_id', $id)->first();
+            return ['status' => true, 'data' => $show_api];
         } else {
             if($user->type=='tutor'){
                 return view('layout.portfolio',['show'=>$show ]);
