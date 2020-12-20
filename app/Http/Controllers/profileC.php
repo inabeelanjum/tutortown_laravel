@@ -142,4 +142,23 @@ class profileC extends Controller
     }
 
 
+    public function skill_api()
+    {
+      $user =Auth::id();
+
+       $data = skill::where('user_id',$user)->first();
+        return ['status' => true , 'data' => $data];
+    }
+
+
+    public function get_review_api()
+    {
+    $user =Auth::id();
+    $data = reviews::where('tutor_id',$user)->get();
+    return ['status' => true , 'data' => $data];
+
+
+    }
+
+
 }

@@ -17,7 +17,8 @@ class notiController extends Controller
 
             if( $req->is('api/*'))
             {
-                return ['status'=> true , 'data' => $show];
+                $show_api= notification::where('receiv_id', $id)->get();
+                return ['status'=> true , 'data' => $show_api];
             }
             else{
                 return view('layout/notifications', ['show' => $show]);

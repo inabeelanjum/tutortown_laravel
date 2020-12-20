@@ -62,6 +62,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/requests', [requestController::class ,'show'])->name('requests');
     Route::post('/creater', [requestController::class ,'creater'])->name('creater');
     Route::get('/profile', [profileC::class ,'profile']);
+    Route::get('/skill', [profileC::class ,'skill_api']);
+    Route::get('/get_review', [profileC::class ,'get_review_api']);
     Route::post('/editpro', [profileC::class ,'editpro'])->name('editpro');
     Route::any('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
     Route::get('/notifications', [notiController::class ,'all_notifications'])->name('notifications');

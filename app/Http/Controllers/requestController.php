@@ -101,7 +101,8 @@ class requestController extends Controller
       $show =userrequest::simplePaginate(3);
 
       if( $req->is('api/*')){
-        return ['status' => true, 'data' => $show];
+        $show_api=userrequest::all();
+        return ['status' => true, 'data' => $show_api];
     } else {
         return view('layout/requests', ['show' => $show]);
     }
