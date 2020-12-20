@@ -72,6 +72,8 @@ class msgsController extends Controller
         if($tutor) {
             $sender_id = Auth::user()->id;
             $receiver_id = $tutor_id;
+ 
+            
             if($request->has('send_message')) {
                 $msg = new msgs();
                 $msg->msg = $request->get('message');
@@ -89,14 +91,16 @@ class msgsController extends Controller
                             $query->where('sender_id', $receiver_id)->where('receiver_id', $sender_id);
                         })
                         ->get();
+
             if(count($messages)) {
                 foreach($messages as $k => $user) {
                     $id = ($user->sender_id == $sender_id) ? $user->receiver_id : $user->sender_id;
-                    if(!isset($sidebar_users[$id])) {
+                     if(!isset($sidebar_users[$id])) {
                         $sidebar_users[$id] = User::where('id', $id)->with('profile')->first();
-                    }
+                        
+                     }
                 }
-                
+               
             }
             // check if student has already hired this tutor
             $if_hired = hiring::where('sender_id', $sender_id)->where('receiver_id', $receiver_id)->first();

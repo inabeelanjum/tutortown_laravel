@@ -108,7 +108,7 @@
 			</div>
 		</form>
 	</div>
-	@if(Auth::user()->type =='user' && isset($if_hired) && isset($if_hired->status))
+	@if(Auth::user()->type =='user')
 		<?php if(isset($if_hired) && $if_hired->status == 0) { ?>
 			<div class="alert hire_me_alert alert-info" role="alert">A hiring request has been sent to Tutor.</div>
 		<?php } else if(isset($if_hired) && $if_hired->status == 1) { ?> 

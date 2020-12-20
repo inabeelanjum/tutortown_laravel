@@ -150,13 +150,15 @@
 	            		<i class="fas fa-at text-white" data-fa-transform="shrink-8"></i>
 	            	</div>
 	              <div class="media-body">
-                  <form method="post" action="{{url(($show['type'] == 'tutor') ? '/user/chat' : '/tutor/chat')}}">
-
+                  <form method="post" action="{{url('/tutor/chat/'.$show['id'])}}">
+@csrf
+                     <input type="hidden" name="send_message">
                     <div class="form-group">
                       <div class="input-group input-group-sm">
                         <div class="input-group-prepend" id="message">
                           <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
                         </div>
+
                         <textarea class="form-control" name="message" placeholder="Your message here" aria-label="Your message" aria-describedby="message" rows="3"></textarea>
                       </div>
                     </div>

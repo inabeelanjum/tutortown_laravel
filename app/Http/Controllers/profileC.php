@@ -30,11 +30,19 @@ class profileC extends Controller
     
          $avg = 0;
          $total = count($star);
-         foreach($star as $s)
+         if($total > 0)
          {
-             $avg += $s->star;
+            foreach($star as $s)
+            {
+                $avg += $s->star;
+            }
+            $average = $avg / $total ;
+
          }
-         $average = $avg / $total ;
+         else{
+             $average = 0;
+         }
+        
        
 
         if ( empty($show )) {
