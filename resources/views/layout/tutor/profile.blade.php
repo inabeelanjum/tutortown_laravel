@@ -43,6 +43,7 @@
         <div class="col-12 col-lg-8">
           <div class="card mb-4">
           	<h2 class="card-header text-center">{{$show['name']}}</h2>
+            <h4 class="card-header  float-right">Average Ratings <i class="text-center fas fa-star float-right">{{  round($show['average'], 2)}}</i></h4>
             
           	<img src="<?php echo url('/files/'.$show['image'])?>" alt="Portrait of Firstname Lastname" class="w-100" height='500px'>
             <div class="card-body">

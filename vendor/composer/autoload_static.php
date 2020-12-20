@@ -614,6 +614,7 @@ class ComposerStaticInitf9652db0ada5ac1eb26227b6ecb67073
         'App\\Models\\report' => __DIR__ . '/../..' . '/app/Models/report.php',
         'App\\Models\\reviews' => __DIR__ . '/../..' . '/app/Models/reviews.php',
         'App\\Models\\skill' => __DIR__ . '/../..' . '/app/Models/skill.php',
+        'App\\Models\\star' => __DIR__ . '/../..' . '/app/Models/star.php',
         'App\\Models\\userrequest' => __DIR__ . '/../..' . '/app/Models/userrequest.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

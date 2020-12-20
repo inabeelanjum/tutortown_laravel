@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="<?php echo url('/assets/fonts/ionicons.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo url('/assets/css/Navigation-with-Search.css'); ?>">
     <script src="<?php echo url('/assets/js/jquery.min.js'); ?>"></script>
+    <script src="<?php echo url('/assets/js/rating.js'); ?>"></script>
     <script src="<?php echo url('/assets/bootstrap/js/bootstrap.min.js') ?>"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     @yield('head')
 </head>
 

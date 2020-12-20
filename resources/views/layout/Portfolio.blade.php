@@ -11,6 +11,11 @@
       .carousel-indicators .active {
         background-color: #007bff;
       }
+      .fa-star {
+    color: #e6e600;
+
+}
+
     </style>
 @endsection
 @section('content')
@@ -19,13 +24,15 @@
     <div class="container mt-4">
     
       <div class="row">
-      <a  href="{{ url('editp')}}" class="btn btn-success btn-lg btn-block">Edit Profile</a>
+      <a  href="{{ url('editp')}}" class="btn btn-success btn-lg btn-block" >Edit Profile</a>
       
- 
+
         <div class="col-12 col-lg-8">
       
           <div class="card mb-4">
-          	<h2 class="card-header text-center">{{$show['name']}}</h2>
+         <b> <h2 class="card-header text-center">{{$show['name']}}</h2> </b>
+          	<h4 class="card-header  float-right">Average Ratings <i class="text-center fas fa-star float-right">{{  round($show['average'], 2)}}</i></h4>
+            
             
           	<img src="<?php echo url('/files/'.$show['image'])?>" alt="Portrait of Firstname Lastname" class="w-100" height='500px'>
             <div class="card-body">

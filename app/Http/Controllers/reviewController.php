@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Models\reviews;
+use App\Models\star;
+
 
 class reviewController extends Controller
 {
@@ -18,10 +20,18 @@ class reviewController extends Controller
     {
       $tutor_id = $id;
       $user_id =Auth::id();
+      $req -> validate([
+        'review'=> 'required|min:5|max:300',
+    ]);
       $rr = reviews::create([
         'user_id' => $user_id,
         'tutor_id' => $tutor_id,
         'message' =>$req->review,
+    ]);
+    $star =star::create([
+        'user_id' => $user_id,
+        'tutor_id' => $tutor_id,
+        'star' =>$req->star,
     ]);
     if( $req->is('api/*')){
         if($rr == true)

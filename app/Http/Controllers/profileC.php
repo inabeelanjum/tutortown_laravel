@@ -8,6 +8,7 @@ use App\Models\profile;
 use App\Models\reviews;
 use App\Models\User;
 use App\Models\skill;
+use App\Models\star;
 
 class profileC extends Controller
 {
@@ -25,6 +26,17 @@ class profileC extends Controller
         $show= profile::where('user_id', $id)->first();
         $skill= skill::where('user_id', $id)->first();
         $reviews= reviews::where('tutor_id',$id)->get();
+        $star =star::where('tutor_id',$id)->get();
+    
+         $avg = 0;
+         $total = count($star);
+         foreach($star as $s)
+         {
+             $avg += $s->star;
+         }
+         $average = $avg / $total ;
+       
+
         if ( empty($show )) {
             
             return view('layout.profile_edit');
@@ -45,7 +57,8 @@ class profileC extends Controller
             'subj4'  => $skill->subj4,
             'subj5'  => $skill->subj5,
             'subj6'  => $skill->subj6,
-            'reviews'=> $reviews
+            'reviews'=> $reviews,
+            'average'=> $average
             
         ];
 

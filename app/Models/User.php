@@ -60,5 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\reviews');
     }
+    public function star()
+    {
+        return $this->hasMany('App\Models\star');
+    }
   
 }
