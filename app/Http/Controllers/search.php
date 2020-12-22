@@ -42,16 +42,13 @@ if ($req->has('lat'))
   {
 	
     $s=$req->search_item;
-		$tutors=skill::query()
+		$tutors=    skill::query()
 			->where('subj1', 'LIKE', "%{$s}%") 
 			->orWhere('subj2', 'LIKE', "%{$s}%") 
 			->orWhere('subj3', 'LIKE', "%{$s}%")
 			->orWhere('subj4', 'LIKE', "%{$s}%")
 			->orWhere('subj5', 'LIKE', "%{$s}%")
-			->orWhere('subj6', 'LIKE', "%{$s}%")->with('user')->with('profile')
-      ->get();
-	
-
+			->orWhere('subj6', 'LIKE', "%{$s}%")->with('user')->with('profile')->get();
 		if( $req->is('api/*')){
 			return ['status' => true, 'data' => $tutors];
 		} else {

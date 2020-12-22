@@ -42,44 +42,52 @@ class profileC extends Controller
          else{
              $average = 0;
          }
-        
-       
-
         if ( empty($show )) {
             
             return view('layout.profile_edit');
           }
           else
           {
-        $show = [
-            'name'  => $user->name,
-            'type'=>$user->type,
-            'email'  => $user->email,
-            'image'  => $show->image,
-            'about'  => $show->about,
-            'location'  => $show->location,
-            'phone'  => $show->phone,
-            'subj1'  => $skill->subj1,
-            'subj2'  => $skill->subj2,
-            'subj3'  => $skill->subj3,
-            'subj4'  => $skill->subj4,
-            'subj5'  => $skill->subj5,
-            'subj6'  => $skill->subj6,
-            'reviews'=> $reviews,
-            'average'=> $average
-            
-        ];
-
           if( $req->is('api/*')){
             $show_api= profile::where('user_id', $id)->first();
             return ['status' => true, 'data' => $show_api];
         } else {
             if($user->type=='tutor'){
+                $show = [
+                    'name'  => $user->name,
+                    'type'=>$user->type,
+                    'email'  => $user->email,
+                    'image'  => $show->image,
+                    'about'  => $show->about,
+                    'location'  => $show->location,
+                    'charges'  => $show->charges,
+                    'phone'  => $show->phone,
+                    'subj1'  => $skill->subj1,
+                    'subj2'  => $skill->subj2,
+                    'subj3'  => $skill->subj3,
+                    'subj4'  => $skill->subj4,
+                    'subj5'  => $skill->subj5,
+                    'subj6'  => $skill->subj6,
+                    'reviews'=> $reviews,
+                    'average'=> $average
+                    
+                ];
                 return view('layout.portfolio',['show'=>$show ]);
             } 
             else
             {
-                return view('layout.Portfolios',['show'=>$show ]);
+                $showss = [
+                    'name'  => $user->name,
+                    'type'=>$user->type,
+                    'email'  => $user->email,
+                    'image'  => $show->image,
+                    'about'  => $show->about,
+                    'location'  => $show->location,
+                    'phone'  => $show->phone,
+
+                    
+                ];
+                return view('layout.Portfolios',['show'=>$showss ]);
     
             }
         }            

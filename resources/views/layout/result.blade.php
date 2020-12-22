@@ -13,25 +13,26 @@
 @section('content')
     @if(count($tutors)>0)
     <div class="row product-list">
-    @foreach($tutors as $tutor):
+    @foreach($tutors as $tutor)
         <div class="col-sm-6 col-md-4 product-item">
             <div class="product-container">
                 <div class="row">
-                    <div class="col-md-12"><a class="product-image" href="#"><img src="<?php echo (isset($tutor->image)) ? url('/files/'.$tutor->image) : '' ?> "></a></div>
+                    <div class="col-md-12"><a class="product-image" href="#"><img src="<?php echo (isset($tutor->user->profile)) ? url('/files/'.$tutor->user->profile['image']) : '' ?> "></a></div>
                 </div>
                 <div class="row">
                     <div class="col-8">
                         <h2><a href="#">{{$tutor->user->name}}</a></h2>
+    
                     </div>
                    
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <p class="product-description">{{$tutor->about}} </p>
+                        <p class="product-description">{{$tutor->user->profile['about']}} </p>
                         <div class="row">
                         <a class="float-right btn btn-primary" href="<?php echo url('/tutor/profile/'.$tutor->user_id) ?>">View Profile</a>
                             <div class="col-6">
-                                <p class="product-price">{{$tutor->charges}}</p>
+                                <p class="product-price">{{$tutor->user->profile['charges']}}</p>
                             </div>
                         </div>
                     </div>
