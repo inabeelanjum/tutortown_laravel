@@ -23,6 +23,6 @@
     </span>
 @enderror</div>
             
-            <div class="form-group"><button class="btn btn-success btn-block" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a></form>
+            <div class="form-group"><button class="btn btn-success btn-block" type="submit">Log In</button></div><a class="forgot" href="#"></a></form>
     </div>
 @endsection

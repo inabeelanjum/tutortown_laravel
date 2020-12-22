@@ -22,7 +22,7 @@ class admin extends Controller
         }
         else
         {
-            return view('layout.home');
+            return view('layout.admin');
 
         }
     }

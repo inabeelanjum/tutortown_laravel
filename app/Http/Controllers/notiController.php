@@ -15,7 +15,6 @@ class notiController extends Controller
         {
             $id =Auth::id();
             $show= notification::where('receiv_id', $id)->simplePaginate(5);
-
             if( $req->is('api/*'))
             {
                 $show_api= notification::where('receiv_id', $id)->get();

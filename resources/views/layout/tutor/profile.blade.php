@@ -138,7 +138,7 @@
            
 	              <div class="media-body">
 	              	<address class="mb-0">
-                <h2> <b> {{$show['location']}}</b> </h2> Rupees per hour
+                <h2> <b> {{$show['charges']}}</b> </h2> Rupees per hour
 	              	</address>
 	              	<hr>
 	              </div>

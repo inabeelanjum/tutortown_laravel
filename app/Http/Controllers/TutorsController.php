@@ -57,6 +57,7 @@ class TutorsController extends Controller
             'about'  => $show->about,
             'location'  => $show->location,
             'phone'  => $show->phone,
+            'charges'  => $show->charges,
             'subj1'  => $skill->subj1,
             'subj2'  => $skill->subj2,
             'subj3'  => $skill->subj3,

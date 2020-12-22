@@ -16,7 +16,7 @@
 <br>
                             <ul class="thread-list">
                             @foreach( $show as $s)
-                                <li class="thread"><span class="title">{{$s ->replyr }} </span><span> <button type="button" class="btn btn-success pull-right">Message</button></i></a></span></li> <hr>
+                                <li class="thread"><span class="title">{{$s ->replyr }} </span><span> <a type="button" href= <?php echo url('/tutor/profile/'.$s->send_id) ?> class="btn btn-success pull-right">Contact Tutor</a></i></a></span></li> <hr>
                              @endforeach
                            
                         </div>
