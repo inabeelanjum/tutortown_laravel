@@ -22,6 +22,8 @@ use App\Http\Controllers\reportC;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::any('/all_chat_api/{id}', [notiController::class ,'all_message_api']);
+Route::any('/chat_api/{id}', [notiController::class ,'message_api']);
 Route::get('/admin', [admin::class ,'index'])->middleware('auth');
 Route::get('/', [search::class ,'index'])->middleware('auth');
 Route::post('/search', [search::class ,'searchtutor'])->name('search')->middleware('auth');

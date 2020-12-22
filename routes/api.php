@@ -41,6 +41,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     @Problem: following line was commented out in App\Providers\RouteServiceProvider.php
     protected $namespace = 'App\\Http\\Controllers';
     */
+    Route::any('/all_chat_api/{id}', [notiController::class ,'all_message_api']);
+    Route::any('/chat_api/{id}', [notiController::class ,'message_api']);
     Route::post('/respond-hiring-request/{id}', [msgsController::class ,'respond_hiring_request'])->name('respond_hiring_request');
     Route::post('/update-my-location', [search::class ,'updateloc'])->name('update-my-location');
     Route::post('/send-message/{id}', [msgsController::class ,'send_message'])->name('send_message');
@@ -50,6 +52,7 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat'); 
 
     Route::get('/chat', [msgsController::class ,'chat'])->name('chat');
+   
 
     Route::get('/nearby', [search::class ,'searchNearByTutor'])->name('nearby');
     Route::post('/search', [search::class ,'searchtutor'])->name('search');

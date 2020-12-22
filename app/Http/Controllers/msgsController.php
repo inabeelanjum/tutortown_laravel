@@ -20,6 +20,12 @@ class msgsController extends Controller
                 })->orWhere(function($query) use ($sender_id) {
                     $query->where('receiver_id', $sender_id);
                 })->get();
+
+                if(count($messages) == null)
+                {
+                    return view('layout.home');
+                }
+               
         $sidebar_users = [];
         if(count($messages)) {
             foreach($messages as $k => $user) {
@@ -46,7 +52,9 @@ class msgsController extends Controller
                 }
                 
             }
+           
             // check if student has already hired this tutor
+         
 
             $if_hiring_request = (object) [];
             $if_hired = (object) [];
@@ -290,5 +298,10 @@ class msgsController extends Controller
         $ret['data'] = $messages;
         return $ret;
     }
+
+
+
+
+   
    
 }

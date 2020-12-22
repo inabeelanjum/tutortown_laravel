@@ -48,9 +48,9 @@ if ($req->has('lat'))
 			->orWhere('subj3', 'LIKE', "%{$s}%")
 			->orWhere('subj4', 'LIKE', "%{$s}%")
 			->orWhere('subj5', 'LIKE', "%{$s}%")
-			->orWhere('subj6', 'LIKE', "%{$s}%")->with('user')    
+			->orWhere('subj6', 'LIKE', "%{$s}%")->with('user')->with('profile')
       ->get();
-     
+	
 
 		if( $req->is('api/*')){
 			return ['status' => true, 'data' => $tutors];

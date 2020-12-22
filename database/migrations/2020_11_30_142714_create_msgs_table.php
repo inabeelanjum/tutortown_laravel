@@ -18,7 +18,7 @@ class CreateMsgsTable extends Migration
             $table->string('msg');
             $table->integer('sender_id');
             $table->integer('receiver_id');
-            $table->boolean('status')->deafult('0');
+            $table->boolean('status')->default('0');
             $table->timestamps();
         });
     }

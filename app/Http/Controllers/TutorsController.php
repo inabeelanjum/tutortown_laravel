@@ -30,8 +30,9 @@ class TutorsController extends Controller
       
         $user= User::find($tutor_id);
         $show= profile::where('user_id', $tutor_id)->first();
-        $skill= skill::where('user_id', $tutor_id)->first();
+      
         $reviews= reviews::where('tutor_id',$tutor_id)->simplePaginate(1);
+        $skill = skill::where('user_id', $tutor_id)->first();
         $star =star::where('tutor_id',$tutor_id)->get();
         $avg = 0;
         $total = count($star);
@@ -62,7 +63,7 @@ class TutorsController extends Controller
             'subj4'  => $skill->subj4,
             'subj5'  => $skill->subj5,
             'subj6'  => $skill->subj6,
-            'reviews'=>$reviews,
+            'reviews'=> $reviews,
             'average' => $average,
         ];
             if( $request->is('api/*')){
