@@ -19,9 +19,6 @@ class profile extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function skill()
-    {
-        return $this->hasMany(skill::class);
-    }
+   
         
 }
