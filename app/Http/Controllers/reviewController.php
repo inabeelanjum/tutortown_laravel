@@ -44,7 +44,7 @@ class reviewController extends Controller
         }
       
     } else {
-        return redirect()->back()->with('success','Review has been posted');
+        return view('layout.home');
     }
 
   

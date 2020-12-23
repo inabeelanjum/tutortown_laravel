@@ -25,7 +25,7 @@
                     <input type="text" name ='star' readonly id="starsInput" class="form-control form-control-sm"> 
            </div>
            <br>
-          <div class="form-group"><textarea class="form-control" name="review" placeholder="please write about your requirements" rows="8"></textarea></div>
+          <div class="form-group"><textarea class="form-control" name="review" placeholder="please write about your feedback" rows="8"></textarea></div>
             <div class="form-group"><button class="btn btn-success" type="submit">review</button></div>
         </form>
 

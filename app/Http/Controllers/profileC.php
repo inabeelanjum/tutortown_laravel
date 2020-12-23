@@ -25,7 +25,7 @@ class profileC extends Controller
         $user= User::find($id);
         $show= profile::where('user_id', $id)->first();
         $skill= skill::where('user_id', $id)->first();
-        $reviews= reviews::where('tutor_id',$id)->get();
+        $reviews= reviews::where('tutor_id',$id)->simplePaginate(1);
         $star =star::where('tutor_id',$id)->get();
     
          $avg = 0;

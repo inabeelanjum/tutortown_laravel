@@ -63,6 +63,7 @@
                   </div>
                   @endforeach
                      </div>
+                     {{ $show['reviews']->links() }}
                      
                      @endif
                      @if(session() -> has('success'))
