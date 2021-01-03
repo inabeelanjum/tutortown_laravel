@@ -24,4 +24,13 @@ class hiringController extends Controller
         
 
    }
+
+
+   public function get_hiring()
+   {
+   $id = Auth::id();
+  $hiring=hiring::where('receiver_id', $id)->first();
+  return ['success' => true, 'data' => $hiring];
+
+   }
 }

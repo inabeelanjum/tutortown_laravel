@@ -74,4 +74,18 @@ class TutorsController extends Controller
             }
      
         }
+
+
+        public function profile_review($id)
+        {
+           $rr= reviews::where('tutor_id',$id)->get();
+            return ['status'=>true, 'data' => $rr];
+
+        }
+        public function profile_star($id)
+        {
+           $rr= star::where('tutor_id',$id)->get();
+            return ['status'=>true, 'data' => $rr];
+
+        }
 }

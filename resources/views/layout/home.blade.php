@@ -13,8 +13,8 @@
         <div class="row">
                 <div class="col">
                     <div class="d-flex" id="divc">
-                        <input name="search_item" class="form-control form-control-lg bg-white border-white shadow-none form-control d-flex flex-row flex-grow-1 flex-shrink-1 flex-fill justify-content-center" type="text" id="search" style="width:700px;height: 50px;margin-right: 0px;margin-left: 0px;"
-                            placeholder="search here" autocomplete="on">
+                        <input name="search_item" class="form-control form-control-lg bg-white border-white shadow-none form-control d-flex flex-row flex-grow-1 flex-shrink-1 flex-fill justify-content-center " type="text" id="search" style="width:700px;height: 50px;margin-right: 0px;margin-left: 0px;"
+                            placeholder="search here" autocomplete="on" required>
                         </div>
                 </div>
             </div>

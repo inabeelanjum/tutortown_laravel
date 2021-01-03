@@ -52,14 +52,16 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat'); 
 
     Route::get('/chat', [msgsController::class ,'chat'])->name('chat');
+    Route::get('/chatList', [profileC::class ,'all_chat_list']);
    
 
     Route::get('/nearby', [search::class ,'searchNearByTutor'])->name('nearby');
     Route::post('/search', [search::class ,'searchtutor'])->name('search');
     Route::post('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
     Route::any('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
+    Route::any('/getHiring', [hiringController::class ,'get_hiring']);
     Route::post('/replyr/{id}', [requestController::class ,'replyr'])->name('replyr');
-    Route::post('/review/{id}', [reviewController::class ,'review_submit'])->name('review');
+  
     Route::any('/user', [AuthController::class ,'user'])->name('user');
     Route::get('/tutor/profile/{id}', [TutorsController::class ,'tutor_profile'])->name('tutor_profile');
     Route::get('/requests', [requestController::class ,'show'])->name('requests');
@@ -72,8 +74,12 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/notifications', [notiController::class ,'all_notifications'])->name('notifications');
     Route::post('/message-heartbeat/{id}', [msgsController::class ,'messgae_heartbeat_android'])->name('messgae_heartbeat_android');
     Route::get('/tutor/chat/{id}', [msgsController::class ,'student_to_tutor_chat'])->name('student_to_tutor_chat');
+    Route::post('/review/{id}', [reviewController::class ,'api_review']);
+    
 
 });
 
+Route::any('/stars/{id}', [TutorsController::class ,'profile_star']);
+Route::any('/tutor_review/{id}', [TutorsController::class ,'profile_review']);
 Route::any('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
 Route::any('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('register');

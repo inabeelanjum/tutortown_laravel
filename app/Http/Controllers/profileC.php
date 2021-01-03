@@ -9,6 +9,7 @@ use App\Models\reviews;
 use App\Models\User;
 use App\Models\skill;
 use App\Models\star;
+use App\Models\msgs;
 
 class profileC extends Controller
 {
@@ -188,6 +189,14 @@ class profileC extends Controller
 
 
     }
+    public function all_chat_list()
+    {
+        $id = Auth::id();
+        $msgs = msgs::where('sender_id',$id)->get();
+        return ['status' => true , 'data' => $msgs];
+
+    }
+    
 
 
 }

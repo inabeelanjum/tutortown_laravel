@@ -50,4 +50,32 @@ class reviewController extends Controller
   
 
     }
+
+
+    public function api_review(Request $req , $id)
+    {
+        $tutor_id = $id;
+        $user_id =Auth::id();
+
+
+        $rr = reviews::create([
+            'user_id' => $user_id,
+            'tutor_id' => $tutor_id,
+            'message' =>$req->review,
+        ]);
+        $star =star::create([
+            'user_id' => $user_id,
+            'tutor_id' => $tutor_id,
+            'star' =>$req->star,
+        ]);
+        if($rr == true)
+        {
+            return ['status' => true, 'message' => 'review is submitted' ];
+        }
+        else{
+            return ['status' => false, 'message' => 'invalid request' ];
+
+        }
+
+    }
 }
