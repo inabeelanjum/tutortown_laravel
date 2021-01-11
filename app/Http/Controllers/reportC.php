@@ -49,6 +49,19 @@ class reportC extends Controller
         }
 
     }
+    public function report_api(Request $req, $id)
+    {
+        $reporter_id = Auth::id();
+        $user_id = $id;
+        $rr = report::create([
+            'reporter_id' => $reporter_id,
+            'user_id' => $id,
+            'report' =>$req->report,
+            'report_type'=> 'profile'
+        ]);
+        return['status'=> true , 'message'=> 'report submitted'];
+
+    }
 
     public function report_comment(Request $req , $id)
     {

@@ -67,7 +67,11 @@ class notiController extends Controller
     {
         $sender_id =Auth::id();
         $receiver_id = $id;
-        $all = msgs::where('sender_id', $sender_id)->where('receiver_id',$receiver_id)->get();
+        $all = msgs::where('sender_id', $sender_id)
+        ->orWhere('sender_id',$receiver_id)
+        ->orWhere('receiver_id',$receiver_id)
+        ->orWhere('receiver_id',$sender_id)
+        ->get();
 
         return ['status' => true, 'data' => $all ];
        

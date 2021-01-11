@@ -12,6 +12,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\hiringController;
 use App\Http\Controllers\search;
 use App\Http\Controllers\reviewController;
+use App\Http\Controllers\reportC;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -53,6 +54,7 @@ Route::group(['middleware' => ['auth:api']], function () {
 
     Route::get('/chat', [msgsController::class ,'chat'])->name('chat');
     Route::get('/chatList', [profileC::class ,'all_chat_list']);
+    Route::post('/report/{id}', [reportC::class ,'report_api']);
    
 
     Route::get('/nearby', [search::class ,'searchNearByTutor'])->name('nearby');
@@ -60,6 +62,8 @@ Route::group(['middleware' => ['auth:api']], function () {
     Route::post('/tutors', [TutorsController::class ,'tutors_list'])->name('tutors_list');
     Route::any('/hire-me/{id}', [hiringController::class ,'hire_me'])->name('hire_me');
     Route::any('/getHiring', [hiringController::class ,'get_hiring']);
+    Route::any('/accept_hiring/{id}', [hiringController::class ,'accept_hiring']);
+    Route::any('/reject_hiring/{id}', [hiringController::class ,'reject_hiring']);
     Route::post('/replyr/{id}', [requestController::class ,'replyr'])->name('replyr');
   
     Route::any('/user', [AuthController::class ,'user'])->name('user');

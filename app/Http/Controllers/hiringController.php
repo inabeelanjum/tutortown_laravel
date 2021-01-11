@@ -33,4 +33,27 @@ class hiringController extends Controller
   return ['success' => true, 'data' => $hiring];
 
    }
+
+
+
+   public function accept_hiring($id)
+   {
+   $sender_id = Auth::id();
+   $hire_it = [
+       'status'=>1,
+   ];
+  $hiring=hiring::where('receiver_id', $sender_id)->where('sender_id',$id)->update($hire_it);
+  return ['success' => true, 'message' =>'hiring request accepted'];
+
+   }
+   public function reject_hiring($id)
+   {
+   $sender_id = Auth::id();
+   $hire_it = [
+       'status'=>1,
+   ];
+  $hiring=hiring::where('receiver_id', $sender_id)->where('sender_id',$id)->update($hire_it);
+  return ['success' => true, 'message' =>'hiring request rejected'];
+
+   }
 }
